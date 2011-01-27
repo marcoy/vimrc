@@ -147,11 +147,6 @@ colorscheme vividchalk
 " ------
 set cst
 
-" -------
-" Mapping
-" -------
-cmap w!! w !sudo tee % >/dev/null
-
 " --------------
 " Spell Checking
 " --------------
@@ -172,4 +167,10 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
+
+" -------
+" Mapping
+" -------
+cmap w!! w !sudo tee % >/dev/null
+nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 
