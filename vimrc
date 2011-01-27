@@ -173,4 +173,6 @@ filetype plugin indent on
 " -------
 cmap w!! w !sudo tee % >/dev/null
 nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
+nmap <unique> <silent> <Leader>s :Gstatus<CR>
+nmap <unique> <silent> <Leader>gc :Gcommit<CR>
 
