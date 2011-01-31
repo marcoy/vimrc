@@ -169,10 +169,22 @@ call pathogen#helptags()
 filetype plugin indent on
 
 " -------
+" Taglist
+" -------
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+
+" --------
+" Easytags
+" --------
+let g:easytags_cmd  = '/usr/local/bin/ctags'
+let g:easytags_autorecurse = 1
+
+" -------
 " Mapping
 " -------
 cmap w!! w !sudo tee % >/dev/null
 nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 nmap <unique> <silent> <Leader>s :Gstatus<CR>
 nmap <unique> <silent> <Leader>gc :Gcommit<CR>
+nmap <unique> <silent> <Leader>l :TlistToggle<CR>
 

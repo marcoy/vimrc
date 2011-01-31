@@ -25,3 +25,15 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "bundle/align"]
+	path = bundle/align
+	url = https://github.com/vim-scripts/Align.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/easytags"]
+	path = bundle/easytags
+	url = https://github.com/vim-scripts/easytags.vim.git
