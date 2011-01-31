@@ -177,7 +177,7 @@ let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 " Easytags
 " --------
 let g:easytags_cmd  = '/usr/local/bin/ctags'
-let g:easytags_autorecurse = 1
+" let g:easytags_autorecurse = 1
 
 " -------
 " Mapping
