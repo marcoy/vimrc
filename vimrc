@@ -106,10 +106,9 @@ set smartcase
 set shiftround
 set autoindent
 set copyindent
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam,*.o
 " set shortmess=atI
 " set autochdir
-"
 set nobackup
 set noswapfile
 
@@ -121,8 +120,8 @@ runtime macros/matchit.vim
 " ----
 " Font
 " ----
-"set guifont=Consolas:h14
-set guifont=Menlo:h13
+" set guifont=Menlo:h13
+set guifont=Anonymous\ Pro:h14
 
 " -------
 " Display
@@ -159,6 +158,7 @@ set spellfile=~/.vim/spellfile.add
 :autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
 :autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
 :autocmd FileType html setlocal sts=2 sw=2 ts=2 et
+:autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
 
 " --------
 " Pathagen
@@ -187,4 +187,6 @@ nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 nmap <unique> <silent> <Leader>s :Gstatus<CR>
 nmap <unique> <silent> <Leader>gc :Gcommit<CR>
 nmap <unique> <silent> <Leader>l :TlistToggle<CR>
+" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
