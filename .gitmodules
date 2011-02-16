@@ -37,3 +37,6 @@
 [submodule "bundle/easytags"]
 	path = bundle/easytags
 	url = https://github.com/vim-scripts/easytags.vim.git
+[submodule "bundle/delimitmate"]
+	path = bundle/delimitmate
+	url = https://github.com/Raimondi/delimitMate.git
