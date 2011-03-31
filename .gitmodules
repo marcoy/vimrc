@@ -40,3 +40,9 @@
 [submodule "bundle/delimitmate"]
 	path = bundle/delimitmate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundle/indent-guides"]
+	path = bundle/indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/jellybeans"]
+	path = bundle/jellybeans
+	url = https://github.com/nanotech/jellybeans.vim.git
