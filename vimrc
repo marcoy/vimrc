@@ -182,6 +182,7 @@ let g:easytags_cmd  = '/usr/local/bin/ctags'
 " -------
 " Mapping
 " -------
+let g:EasyMotion_mapping_t = '_t'
 cmap w!! w !sudo tee % >/dev/null
 nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 nmap <unique> <silent> <Leader>s :Gstatus<CR>
