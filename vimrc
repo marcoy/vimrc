@@ -154,7 +154,9 @@ set spellfile=~/.vim/spellfile.add
 " ---------
 " Skeletons
 " ---------
-:autocmd BufNewFile *.rb 0r ~/.vim/skeletons/skel.rb
+:autocmd BufNewFile *.rb  0r ~/.vim/skeletons/skel.rb
+:autocmd BufNewFile *.sbt 0r ~/.vim/skeletons/skel-sbt.sbt
+:autocmd BufNewFile rebar.config 0r ~/.vim/skeletons/skel-rebar.erl
 :autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
 :autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
 :autocmd FileType html setlocal sts=2 sw=2 ts=2 et
