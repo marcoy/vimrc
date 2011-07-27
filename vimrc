@@ -171,9 +171,9 @@ call pathogen#helptags()
 filetype plugin indent on
 
 " -------
-" Taglist
+" Tagbar
 " -------
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 
 " --------
 " Easytags
