@@ -121,19 +121,18 @@ runtime macros/matchit.vim
 " Font
 " ----
 " set guifont=Menlo:h13
-set guifont=Anonymous\ Pro:h14
+" set guifont=Anonymous\ Pro\ 12
+set guifont=Monospace\ 11
 
 " -------
 " Display
 " -------
 set antialias
-" set nomacatsui
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set laststatus=2
 set number " Line Number
-colorscheme vividchalk
 
 " ----------
 " Formatting
@@ -192,4 +191,7 @@ nmap <unique> <silent> <Leader>gc :Gcommit<CR>
 nmap <unique> <silent> <Leader>l :TlistToggle<CR>
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+" colorscheme vividchalk
+colorscheme jellybeans
 
