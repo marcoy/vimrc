@@ -189,7 +189,7 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 nmap <unique> <silent> <Leader>s :Gstatus<CR>
 nmap <unique> <silent> <Leader>gc :Gcommit<CR>
-nmap <unique> <silent> <Leader>l :TlistToggle<CR>
+nmap <unique> <silent> <Leader>b :TagbarToggle<CR>
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
