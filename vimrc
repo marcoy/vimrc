@@ -121,7 +121,7 @@ runtime macros/matchit.vim
 " Font
 " ----
 " set guifont=Menlo:h13
-set guifont=Anonymous Pro:h13
+set guifont=Anonymous\ Pro:h13
 
 " -------
 " Display
