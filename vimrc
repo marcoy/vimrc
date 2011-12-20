@@ -179,6 +179,18 @@ let g:tagbar_ctags_bin = '/usr/bin/ctags'
 let g:easytags_cmd  = '/usr/bin/ctags'
 " let g:easytags_autorecurse = 1
 
+" ----------
+" VimClojure
+" ----------
+let g:vimclojure#HighlightBuiltins = 1
+let g:vimclojure#DynamicHighlighting = 1
+let g:vimclojure#ParenRainbow = 1
+
+" ---------
+" Vim-Slime
+" ---------
+let g:slime_target = "tmux"
+
 " -------
 " Mapping
 " -------
