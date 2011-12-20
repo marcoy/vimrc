@@ -121,7 +121,7 @@ runtime macros/matchit.vim
 " Font
 " ----
 " set guifont=Menlo:h13
-set guifont=Anonymous\ Pro\ 13
+set guifont=Anonymous Pro:h13
 
 " -------
 " Display
@@ -171,12 +171,12 @@ filetype plugin indent on
 " -------
 " Tagbar
 " -------
-let g:tagbar_ctags_bin = '/usr/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 
 " --------
 " Easytags
 " --------
-let g:easytags_cmd  = '/usr/bin/ctags'
+let g:easytags_cmd  = '/usr/local/bin/ctags'
 " let g:easytags_autorecurse = 1
 
 " ----------
