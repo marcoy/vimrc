@@ -120,8 +120,8 @@ runtime macros/matchit.vim
 " ----
 " Font
 " ----
-set guifont=Menlo:h12
-" set guifont=Anonymous\ Pro:h13
+" set guifont=Menlo:h12
+set guifont=Anonymous\ Pro:h13
 
 " -------
 " Display
@@ -186,7 +186,7 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#DynamicHighlighting = 1
 let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#FuzzyIndent = 1
-let g:vimclojure#NailgunClient = "/usr/local/bin/ng"
+let g:vimclojure#NailgunClient = "/usr/bin/ng"
 let g:vimclojure#WantNailgun = 0
 
 " ---------
