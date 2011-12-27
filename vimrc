@@ -18,6 +18,12 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" --------
+" Pathagen
+" --------
+call pathogen#infect()
+call pathogen#helptags()
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -26,7 +32,6 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -39,6 +44,7 @@ map Q gq
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
+set ttymouse=xterm2
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -100,17 +106,18 @@ let mapleader = ","
 set history=1000
 set undolevels=1000
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
 set ignorecase
 set smartcase
 set shiftround
 set autoindent
 set copyindent
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam,*.o
-" set shortmess=atI
-" set autochdir
 set nobackup
 set noswapfile
+set shortmess+=filmnrxoOtT
+set scrolljump=5
+"set scrolloff=5
 
 "-------
 " Macros
@@ -126,12 +133,45 @@ set guifont=Anonymous\ Pro:h13
 " -------
 " Display
 " -------
+set background=dark
 set antialias
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
-set laststatus=2
 set number " Line Number
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
+
+set statusline=%f
+set statusline+=%m      "modified flag
+set statusline+=\ %y      "filetype
+set statusline+=%h      "help file flag
+set statusline+=%r      "read only flag
+set statusline+=%{fugitive#statusline()}
+"display a warning if paste is set
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':''}
+set statusline+=%*
+"display a warning if fileformat isnt unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+set statusline+=%=      "left/right separator
+set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+set laststatus=2
+
+"return the syntax highlight group under the cursor ''
+function! StatuslineCurrentHighlight()
+    let name = synIDattr(synID(line('.'),col('.'),1),'name')
+    if name == ''
+        return ''
+    else
+        return '[' . name . ']'
+    endif
+endfunction
 
 " ----------
 " Formatting
@@ -159,14 +199,6 @@ set spellfile=~/.vim/spellfile.add
 :autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
 :autocmd FileType html setlocal sts=2 sw=2 ts=2 et
 :autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
-
-" --------
-" Pathagen
-" --------
-filetype off 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
 
 " -------
 " Tagbar
@@ -203,8 +235,16 @@ nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 nmap <unique> <silent> <Leader>s :Gstatus<CR>
 nmap <unique> <silent> <Leader>gc :Gcommit<CR>
 nmap <unique> <silent> <Leader>b :TagbarToggle<CR>
+
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+"Make <c-l> clear the highlight as well as redraw
+nnoremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
+
+"Map jk -> escape
+inoremap jk <esc>
 
 " colorscheme vividchalk
 colorscheme jellybeans
