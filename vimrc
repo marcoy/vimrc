@@ -112,6 +112,7 @@ set smartcase
 set shiftround
 set autoindent
 set copyindent
+set smartindent
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam,*.o
 set nobackup
 set noswapfile
@@ -173,12 +174,6 @@ function! StatuslineCurrentHighlight()
     endif
 endfunction
 
-" ----------
-" Formatting
-" See fo-table
-" ----------
-" set fo+=a
-
 " ------
 " CScope
 " ------
@@ -188,6 +183,19 @@ set cst
 " Spell Checking
 " --------------
 set spellfile=~/.vim/spellfile.add
+
+" ----------
+" Completion
+" ----------
+set completeopt=longest,menuone,preview
+set ofu=syntaxcomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
 
 " ---------
 " Skeletons
