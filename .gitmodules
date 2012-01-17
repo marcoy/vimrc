@@ -90,3 +90,7 @@
     path = bundle/ultisnips
     url = https://github.com/SirVer/ultisnips.git
     ignore = untracked
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+    ignore = untracked
