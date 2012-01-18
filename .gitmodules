@@ -94,3 +94,7 @@
 	path = bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
     ignore = untracked
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+    ignore = untracked
