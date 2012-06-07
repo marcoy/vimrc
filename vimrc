@@ -213,12 +213,6 @@ autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
 " -------
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 
-" --------
-" Easytags
-" --------
-let g:easytags_cmd  = '/usr/local/bin/ctags'
-" let g:easytags_autorecurse = 1
-
 " ----------
 " VimClojure
 " ----------
@@ -228,11 +222,6 @@ let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#FuzzyIndent = 1
 let g:vimclojure#NailgunClient = "/usr/bin/ng"
 let g:vimclojure#WantNailgun = 0
-
-" ---------
-" Vim-Slime
-" ---------
-let g:slime_target = "tmux"
 
 " -------
 " Mapping
