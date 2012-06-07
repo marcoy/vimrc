@@ -38,10 +38,6 @@
     path = bundle/nerdcommenter
     url = https://github.com/scrooloose/nerdcommenter.git
     ignore = untracked
-[submodule "bundle/easytags"]
-    path = bundle/easytags
-    url = https://github.com/vim-scripts/easytags.vim.git
-    ignore = untracked
 [submodule "bundle/delimitmate"]
     path = bundle/delimitmate
     url = https://github.com/Raimondi/delimitMate.git
@@ -81,10 +77,6 @@
 [submodule "bundle/VimClojure"]
     path = bundle/VimClojure
     url = https://github.com/vim-scripts/VimClojure.git
-    ignore = untracked
-[submodule "bundle/vim-slime"]
-    path = bundle/vim-slime
-    url = https://github.com/jpalardy/vim-slime.git
     ignore = untracked
 [submodule "bundle/ultisnips"]
     path = bundle/ultisnips
