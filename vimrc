@@ -212,6 +212,7 @@ autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
 " Tagbar
 " -------
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_autofocus = 1
 
 
 " -------
