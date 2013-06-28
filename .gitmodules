@@ -82,3 +82,11 @@
     path = bundle/vim-solarized
     url = https://github.com/altercation/vim-colors-solarized.git
     ignore = untracked
+[submodule "bundle/neocomplete"]
+    path = bundle/neocomplete
+    url = https://github.com/Shougo/neocomplete.vim.git
+    ignore = untracked
+[submodule "bundle/vimproc"]
+    path = bundle/vimproc
+    url = https://github.com/Shougo/vimproc.vim.git
+    ignore = untracked

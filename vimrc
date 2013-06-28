@@ -113,7 +113,9 @@ set shiftround
 set autoindent
 set copyindent
 set smartindent
+set showfulltag
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam,*.o
+set ttyfast
 set nobackup
 set noswapfile
 set shortmess+=filmnrxoOtT
@@ -141,6 +143,9 @@ set fenc=utf-8
 set termencoding=utf-8
 set number " Line Number
 set list
+set cursorline
+set splitbelow
+set splitright
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
 
 set statusline=%f
@@ -194,19 +199,21 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ant set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
 
 " ---------
 " Skeletons
 " ---------
-:autocmd BufNewFile *.rb  0r ~/.vim/skeletons/skel.rb
-:autocmd BufNewFile *.sbt 0r ~/.vim/skeletons/skel-sbt.sbt
-:autocmd BufNewFile rebar.config 0r ~/.vim/skeletons/skel-rebar.erl
-:autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
-:autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
-:autocmd FileType html setlocal sts=2 sw=2 ts=2 et
-:autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
+autocmd BufNewFile *.rb  0r ~/.vim/skeletons/skel.rb
+autocmd BufNewFile *.sbt 0r ~/.vim/skeletons/skel-sbt.sbt
+autocmd BufNewFile rebar.config 0r ~/.vim/skeletons/skel-rebar.erl
+autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
+autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
+autocmd FileType ant setlocal sts=2 sw=2 ts=2 et
+autocmd FileType html setlocal sts=2 sw=2 ts=2 et
+autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
 
 " -------
 " Tagbar
@@ -220,6 +227,30 @@ let g:tagbar_autofocus = 1
 " -------
 let g:paredit_smartjump = 1
 let g:paredit_matchlines = 200
+
+
+" -----------
+" Neocomplete
+" -----------
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplete#close_popup()
+inoremap <expr><C-e> neocomplete#cancel_popup()
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+
+
+" -----
+" Unite
+" -----
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#custom#source('file,file/new,buffer,file_rec,line',
+                       \ 'matchers', 'matcher_fuzzy')
+let g:unite_enable_smart_case = 1
+let g:unite_enable_start_insert = 1
+let g:unite_source_history_yank_enable = 1
+let g:unite_prompt = '» '
 
 
 " ----------
