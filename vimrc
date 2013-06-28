@@ -221,6 +221,12 @@ let g:paredit_smartjump = 1
 let g:paredit_matchlines = 200
 
 
+" ----------
+" Processing
+" ----------
+let g:use_processing_java = 1
+
+
 " -------
 " Mapping
 " -------

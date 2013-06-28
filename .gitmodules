@@ -48,11 +48,11 @@
     ignore = untracked
 [submodule "bundle/easymotion"]
     path = bundle/easymotion
-    url = git://github.com/Lokaltog/vim-easymotion.git
+    url = https:://github.com/Lokaltog/vim-easymotion.git
     ignore = untracked
 [submodule "bundle/tagbar"]
     path = bundle/tagbar
-    url = git://github.com/majutsushi/tagbar
+    url = https://github.com/majutsushi/tagbar
     ignore = untracked
 [submodule "bundle/ultisnips"]
     path = bundle/ultisnips
@@ -69,4 +69,8 @@
 [submodule "bundle/paredit"]
     path = bundle/paredit
     url = https://github.com/vim-scripts/paredit.vim.git
+    ignore = untracked
+[submodule "bundle/vim-processing"]
+    path = bundle/vim-processing
+    url = https://github.com/sophacles/vim-processing.git
     ignore = untracked
