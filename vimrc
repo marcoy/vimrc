@@ -213,6 +213,14 @@ autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
 " -------
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 
+
+" -------
+" Paredit
+" -------
+let g:paredit_smartjump = 1
+let g:paredit_matchlines = 200
+
+
 " -------
 " Mapping
 " -------
