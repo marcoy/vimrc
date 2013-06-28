@@ -248,6 +248,4 @@ inoremap <C-L> <C-O>:nohls<CR>
 "Map jk -> escape
 inoremap jk <esc>
 
-" colorscheme vividchalk
-colorscheme jellybeans
-
+colorscheme solarized
