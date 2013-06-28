@@ -213,16 +213,6 @@ autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
 " -------
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 
-" ----------
-" VimClojure
-" ----------
-let g:vimclojure#HighlightBuiltins = 1
-let g:vimclojure#DynamicHighlighting = 1
-let g:vimclojure#ParenRainbow = 1
-let g:vimclojure#FuzzyIndent = 1
-let g:vimclojure#NailgunClient = "/usr/bin/ng"
-let g:vimclojure#WantNailgun = 0
-
 " -------
 " Mapping
 " -------
