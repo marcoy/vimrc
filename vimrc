@@ -90,10 +90,15 @@ endif " has("autocmd")
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 	 	\ | wincmd p | diffthis
 
+let s:is_windows = has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_macvim = has('gui_macvim')
+
 "------------------
 " Gerneral Settings
 " -----------------
 set vb " Visual Bell
+set noerrorbells
 set showmatch
 set mousehide
 set sts=4
@@ -107,6 +112,7 @@ set history=1000
 set undolevels=1000
 set wildmenu
 set wildmode=list:longest,full
+set keywordprg=":help" " remap K to vim help
 set ignorecase
 set smartcase
 set shiftround
@@ -122,16 +128,38 @@ set shortmess+=filmnrxoOtT
 set scrolljump=5
 "set scrolloff=5
 
+if exists('$TMUX')
+    set clipboard=
+else
+    set clipboard=unnamed " sync with OS clipboard
+endif
+
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+    set grepformat=%f:%l:%c:%m
+endif
+if executable('ack')
+    set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
+    set grepformat=%f:%l:%c:%m
+endif
+
+
 "-------
 " Macros
 "-------
 runtime macros/matchit.vim
 
+
 " ----
 " Font
 " ----
-" set guifont=Menlo:h12
-set guifont=Anonymous\ Pro:h14
+if s:is_macvim
+    set guifont = Anonymous\ Pro:h14
+    set transparency=2
+else
+    set guifont=Mensch\ 11
+endif
+
 
 " -------
 " Display
@@ -146,7 +174,10 @@ set list
 set cursorline
 set splitbelow
 set splitright
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,extends:#
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,precedes:❮,extends:❯
+
+set linebreak
+set showbreak=↪\ 
 
 set statusline=%f
 set statusline+=%m      "modified flag
