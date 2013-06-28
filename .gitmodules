@@ -22,10 +22,6 @@
     path = bundle/ack
     url = https://github.com/mileszs/ack.vim.git
     ignore = untracked
-[submodule "bundle/fugitive"]
-    path = bundle/fugitive
-    url = https://github.com/tpope/vim-fugitive.git
-    ignore = untracked
 [submodule "bundle/supertab"]
     path = bundle/supertab
     url = https://github.com/ervandew/supertab.git
@@ -50,22 +46,6 @@
     path = bundle/jellybeans
     url = https://github.com/nanotech/jellybeans.vim.git
     ignore = untracked
-[submodule "bundle/extradite"]
-    path = bundle/extradite
-    url = https://github.com/int3/vim-extradite.git
-    ignore = untracked
-[submodule "bundle/mustache"]
-    path = bundle/mustache
-    url = https://github.com/juvenn/mustache.vim.git
-    ignore = untracked
-[submodule "bundle/vim-slim"]
-    path = bundle/vim-slim
-    url = https://github.com/bbommarito/vim-slim.git
-    ignore = untracked
-[submodule "bundle/puppet"]
-    path = bundle/puppet
-    url = git://github.com/rodjek/vim-puppet.git
-    ignore = untracked
 [submodule "bundle/easymotion"]
     path = bundle/easymotion
     url = git://github.com/Lokaltog/vim-easymotion.git
@@ -74,23 +54,11 @@
     path = bundle/tagbar
     url = git://github.com/majutsushi/tagbar
     ignore = untracked
-[submodule "bundle/VimClojure"]
-    path = bundle/VimClojure
-    url = https://github.com/vim-scripts/VimClojure.git
-    ignore = untracked
 [submodule "bundle/ultisnips"]
     path = bundle/ultisnips
     url = https://github.com/SirVer/ultisnips.git
     ignore = untracked
-[submodule "bundle/vim-less"]
-	path = bundle/vim-less
-	url = https://github.com/groenewege/vim-less.git
-    ignore = untracked
 [submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-    ignore = untracked
-[submodule "bundle/compot"]
-	path = bundle/compot
-	url = https://github.com/aerosol/vim-compot.git
+    path = bundle/vim-coffee-script
+    url = https://github.com/kchmck/vim-coffee-script.git
     ignore = untracked
