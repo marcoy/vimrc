@@ -450,6 +450,7 @@ let g:clojure_align_multiline_strings = 0
 "===============================================================================
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_delimiter = 1
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplete#close_popup()
 "inoremap <expr><C-e> neocomplete#cancel_popup()
