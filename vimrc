@@ -1,50 +1,39 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2006 Nov 16
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+" Inspired by https://github.com/terryma/dotfiles/blob/master/.vimrc
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+" Disable vi-compatibility
 set nocompatible
 
-" --------
+
+"===============================================================================
 " Pathagen
-" --------
+"===============================================================================
 call pathogen#infect()
 call pathogen#helptags()
 
+
+"===============================================================================
+" OS Detection
+"===============================================================================
+let s:is_windows = has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_macvim = has('gui_macvim')
+
+
+"===============================================================================
+" General Settings
+"===============================================================================
+
+" Set augroup
+augroup MyAutoCmd
+    " Remvoe all autocommands for this group
+    autocmd!
+augroup END
+
+" Enable file type detection.
+filetype plugin indent on
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-set mouse=a
-set ttymouse=xterm2
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -53,85 +42,177 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+" show the cursor position all the time
+set ruler
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+" display incomplete commands
+set showcmd
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+" do incremental searching
+set incsearch
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
-
-let s:is_windows = has('win32') || has('win64')
-let s:is_cygwin = has('win32unix')
-let s:is_macvim = has('gui_macvim')
-
-"------------------
-" Gerneral Settings
-" -----------------
-set vb " Visual Bell
-set noerrorbells
-set showmatch
+" Turn on the mouse, since it doesn't play well with tmux anyway. This way I can
+" scroll in the terminal
+set mouse=a
 set mousehide
-set sts=4
-set ts=4
-set sw=4
-set et
-set smarttab
-set hidden
-let mapleader = ","
-set history=1000
-set undolevels=1000
-set wildmenu
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+set ttymouse=xterm2
+
+" Solid line for vsplit separator
+set fcs=vert:│
+
+" Give one virtual space at end of line
+set virtualedit=onemore
+
+" Turn on line number
+set number
+
+" Always splits to the right and below
+set splitright
+set splitbelow
+
+" 256bit terminal
+set t_Co=256
+
+" Tell Vim to use dark background
+set background=dark
+
+" Sets how many lines of history vim has to remember
+set history=10000
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Display unprintable chars
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,precedes:❮,extends:❯
+set showbreak=↪\ 
+"set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+"set showbreak=↪
+
+" Open all folds initially
+set foldmethod=indent
+set foldlevelstart=99
+
+" Auto complete setting
+set completeopt=longest,menuone,preview
+
 set wildmode=list:longest,full
-set keywordprg=":help" " remap K to vim help
+set wildmenu "turn on wild menu
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam,*.o
+set wildignore+=*.obj,*~,*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
+set wildignore+=*/.nx/**,*.app
+
+" Allow changing buffer without saving it first
+set hidden
+
+" Case insensitive search
 set ignorecase
 set smartcase
-set shiftround
-set autoindent
+
+" Set sensible heights for splits
+"set winheight=50
+
+" Make regex a little easier to type
+set magic
+
+" Show matching brackets
+set showmatch
+
+" Set encoding to utf-8
+set enc=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+
+" Turn backup off
+set nobackup
+"set nowritebackup
+set noswapfile
+
+" Tab settings
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smarttab
+
+" Text display settings
 set copyindent
 set smartindent
-set showfulltag
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.beam,*.o
+set linebreak
+set textwidth=80
+set autoindent
+set nowrap
+set whichwrap+=h,l,<,>,[,]
+
+" A fast terminal connection
 set ttyfast
-set nobackup
-set noswapfile
-set shortmess+=filmnrxoOtT
-set scrolljump=5
-"set scrolloff=5
+
+" Use cscope and tag file
+set cst
+
+" Spelling highlights. Use underline in term to prevent cursorline highlights
+" from interfering
+if !has("gui_running")
+  hi clear SpellBad
+  hi SpellBad cterm=underline ctermfg=red
+  hi clear SpellCap
+  hi SpellCap cterm=underline ctermfg=blue
+  hi clear SpellLocal
+  hi SpellLocal cterm=underline ctermfg=blue
+  hi clear SpellRare
+  hi SpellRare cterm=underline ctermfg=blue
+endif
+set spellfile=~/.vim/spellfile.add
+
+" Smooth font on Mac OS X
+set antialias
+
+" Highlight the current line
+set cursorline
+
+" disable sounds
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" remap K to vim help
+set keywordprg=":help"
+
+" Indent is multiple of shiftwidth
+set shiftround
+
+" Writes to the unnamed register also writes to the * and + registers.
+" This makes it easy to interact with the system clipboard.
+if has ('unnamedplus')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
 
 if exists('$TMUX')
     set clipboard=
 else
     set clipboard=unnamed " sync with OS clipboard
+endif
+
+" Cursor settings. This makes terminal vim sooo much nicer!
+" Tmux will only forward escape sequences to the terminal if surrounded by a DCS
+" sequence
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 if executable('ag')
@@ -143,42 +224,8 @@ if executable('ack')
     set grepformat=%f:%l:%c:%m
 endif
 
-
-"-------
-" Macros
-"-------
-runtime macros/matchit.vim
-
-
-" ----
-" Font
-" ----
-if s:is_macvim
-    set guifont=Anonymous\ Pro:h14
-    set transparency=2
-else
-    set guifont=Mensch\ 11
-endif
-
-
-" -------
-" Display
-" -------
-set background=dark
-set antialias
-set enc=utf-8
-set fenc=utf-8
-set termencoding=utf-8
-set number " Line Number
-set list
-set cursorline
-set splitbelow
-set splitright
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,precedes:❮,extends:❯
-
-set linebreak
-set showbreak=↪\ 
-
+" Status line
+set laststatus=2
 set statusline=%f
 set statusline+=%m      "modified flag
 set statusline+=\ %y      "filetype
@@ -198,7 +245,6 @@ set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
-set laststatus=2
 
 "return the syntax highlight group under the cursor ''
 function! StatuslineCurrentHighlight()
@@ -210,59 +256,162 @@ function! StatuslineCurrentHighlight()
     endif
 endfunction
 
-" ------
-" CScope
-" ------
-set cst
 
-" --------------
-" Spell Checking
-" --------------
-set spellfile=~/.vim/spellfile.add
+"===============================================================================
+" Leader Mappings
+"===============================================================================
 
-" ----------
-" Completion
-" ----------
-set completeopt=longest,menuone,preview
-set ofu=syntaxcomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ant set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType clojure set omnifunc=vimclojure#OmniCompletion
+" Map leader and localleader key to comma
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
 
-" ---------
-" Skeletons
-" ---------
-autocmd BufNewFile *.rb  0r ~/.vim/skeletons/skel.rb
-autocmd BufNewFile *.sbt 0r ~/.vim/skeletons/skel-sbt.sbt
-autocmd BufNewFile rebar.config 0r ~/.vim/skeletons/skel-rebar.erl
+" <Leader>1: Toggle between paste mode
+nnoremap <silent> <Leader>1 :set paste!<cr>
+
+" <Leader>s: Spell checking shortcuts
+nnoremap <Leader>ss :setlocal spell!<cr>
+nnoremap <Leader>sj ]s
+nnoremap <Leader>sk [s
+nnoremap <Leader>sa zg]s
+nnoremap <Leader>sd 1z=
+nnoremap <Leader>sf z=
+
+" <Leader>d: Delete the current buffer
+nnoremap <Leader>d :bdelete<CR>
+
+
+"===============================================================================
+" Normal Mode Key Mappings
+"===============================================================================
+
+" gp to visually select pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" f: Find. Also support repeating with .
+nnoremap <Plug>OriginalSemicolon ;
+nnoremap <silent> f :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>f
+nnoremap <silent> t :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>t
+nnoremap <silent> F :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>F
+nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
+
+" ;: Command mode
+noremap ; :
+
+" c: Change into the blackhole register to not clobber the last yank
+nnoremap c "_c
+
+" d: Delete into the blackhole register to not clobber the last yank
+nnoremap d "_d
+
+" dd: I use this often to yank a single line, retain its original behavior
+nnoremap dd dd
+
+" Tab: Go to matching element
+nnoremap <Tab> %
+
+
+"===============================================================================
+" Macros
+"===============================================================================
+runtime macros/matchit.vim
+
+
+"===============================================================================
+" Font
+"===============================================================================
+if s:is_macvim
+    set guifont=Anonymous\ Pro:h14
+    set transparency=2
+else
+    set guifont=Mensch\ 11
+endif
+
+
+"===============================================================================
+" Auto Commands
+"===============================================================================
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ant setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType clojure setlocal omnifunc=vimclojure#OmniCompletion
+autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
+
 autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
 autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
 autocmd FileType ant setlocal sts=2 sw=2 ts=2 et
 autocmd FileType html setlocal sts=2 sw=2 ts=2 et
 autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
+autocmd FileType json setlocal syntax=javascript
 
-" -------
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+
+
+"===============================================================================
 " Tagbar
-" -------
+"===============================================================================
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_autofocus = 1
+nmap <unique> <silent> <Leader>b :TagbarToggle<CR>
 
 
-" -------
+"===============================================================================
 " Paredit
-" -------
+"===============================================================================
 let g:paredit_smartjump = 1
 let g:paredit_matchlines = 200
 
 
-" -----------
+"===============================================================================
+" Rainbow parentheses
+"===============================================================================
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
+
+
+"===============================================================================
+" Vim-Clojure Static
+"===============================================================================
+let g:clojure_align_multiline_strings = 0
+
+
+"===============================================================================
 " Neocomplete
-" -----------
+"===============================================================================
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_at_startup = 1
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
@@ -272,16 +421,158 @@ inoremap <expr><C-g> neocomplete#undo_completion()
 inoremap <expr><C-l> neocomplete#complete_common_string()
 
 
-" -----
+"===============================================================================
 " Unite
-" -----
+"===============================================================================
+
+" Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" Use the rank sorter for everything
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+" Set up some custom ignores
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ ], '\|'))
+
 call unite#custom#source('file,file/new,buffer,file_rec,line',
                        \ 'matchers', 'matcher_fuzzy')
-let g:unite_enable_smart_case = 1
+
+" Start in insert mode
 let g:unite_enable_start_insert = 1
+
+" Enable short source name in window
+" let g:unite_enable_short_source_names = 1
+
+" Enable history yank source
 let g:unite_source_history_yank_enable = 1
+
+" Open in bottom right
+let g:unite_split_rule = "botright"
+
+" Shorten the default update date of 500ms
+let g:unite_update_time = 200
+
+let g:unite_source_file_mru_limit = 1000
+let g:unite_cursor_line_highlight = 'TabLineSel'
+" let g:unite_abbr_highlight = 'TabLine'
+
+let g:unite_source_file_mru_filename_format = ':~:.'
+let g:unite_source_file_mru_time_format = ''
+
+let g:unite_enable_smart_case = 1
 let g:unite_prompt = '» '
+
+" Map space to the prefix for Unite
+nnoremap [unite] <Nop>
+nmap <space> [unite]
+
+" General fuzzy search
+nnoremap <silent> [unite]<space> :<C-u>Unite
+      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
+
+" Quick registers
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+
+" Quick buffer and mru
+nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
+
+" Quick yank history
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
+
+" Quick outline
+nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -vertical outline<CR>
+
+" Quick sessions (projects)
+nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
+
+" Quick sources
+nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
+
+" Quick snippet
+nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
+
+" Quickly switch lcd
+nnoremap <silent> [unite]d
+      \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
+
+" Quick file search
+nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
+
+" Quick grep from cwd
+nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
+
+" Quick help
+nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
+
+" Quick line using the word under cursor
+nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
+
+" Quick MRU search
+nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
+
+" Quick find
+nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
+
+" Quick commands
+nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
+
+" Quick bookmarks
+nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
+
+" Fuzzy search from current buffer
+" nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
+      " \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
+
+" Quick commands
+nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
+
+" Custom Unite settings
+autocmd MyAutoCmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+    imap <buffer> <ESC> <Plug>(unite_exit)
+    " imap <buffer> <c-j> <Plug>(unite_select_next_line)
+    imap <buffer> <c-j> <Plug>(unite_insert_leave)
+    nmap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
+    nmap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
+    imap <buffer> <c-a> <Plug>(unite_choose_action)
+    imap <buffer> <Tab> <Plug>(unite_exit_insert)
+    imap <buffer> jj <Plug>(unite_insert_leave)
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
+    imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
+    imap <buffer> '     <Plug>(unite_quick_match_default_action)
+    nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+    nmap <buffer> <C-r> <Plug>(unite_redraw)
+    imap <buffer> <C-r> <Plug>(unite_redraw)
+    inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+    nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+    inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+
+    let unite = unite#get_current_unite()
+    if unite.buffer_name =~# '^search'
+        nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+    else
+        nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+    endif
+
+    nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+
+    " Using Ctrl-\ to trigger outline, so close it using the same keystroke
+    if unite.buffer_name =~# '^outline'
+        imap <buffer> <C-\> <Plug>(unite_exit)
+    endif
+
+    " Using Ctrl-/ to trigger line, close it using same keystroke
+    if unite.buffer_name =~# '^search_file'
+        imap <buffer> <C-_> <Plug>(unite_exit)
+    endif
+endfunction
 
 
 " ----------
@@ -295,10 +586,8 @@ let g:use_processing_java = 1
 " -------
 let g:EasyMotion_mapping_t = '_t'
 cmap w!! w !sudo tee % >/dev/null
-nmap <unique> <silent> <Leader>f :CommandTFlush<CR>
 nmap <unique> <silent> <Leader>s :Gstatus<CR>
 nmap <unique> <silent> <Leader>gc :Gcommit<CR>
-nmap <unique> <silent> <Leader>b :TagbarToggle<CR>
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>

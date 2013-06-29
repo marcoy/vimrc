@@ -90,3 +90,23 @@
     path = bundle/vimproc
     url = https://github.com/Shougo/vimproc.vim.git
     ignore = untracked
+[submodule "bundle/vim-fireplace"]
+    path = bundle/vim-fireplace
+    url = https://github.com/tpope/vim-fireplace.git
+    ignore = untracked
+[submodule "bundle/vim-classpath"]
+    path = bundle/vim-classpath
+    url = https://github.com/tpope/vim-classpath.git
+    ignore = untracked
+[submodule "bundle/vim-clojure-staic"]
+    path = bundle/vim-clojure-staic
+    url = https://github.com/guns/vim-clojure-static.git
+    ignore = untracked
+[submodule "bundle/rainbow_parentheses"]
+    path = bundle/rainbow_parentheses
+    url = https://github.com/kien/rainbow_parentheses.vim.git
+    ignore = untracked
+[submodule "bundle/vim-repeat"]
+    path = bundle/vim-repeat
+    url = https://github.com/tpope/vim-repeat.git
+    ignore = untracked
