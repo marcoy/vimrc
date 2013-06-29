@@ -626,11 +626,15 @@ let g:use_processing_java = 1
 let g:EasyMotion_mapping_t = '_t'
 
 
+"===============================================================================
+" NERDCommenter
+"===============================================================================
+
+" Always leave a space between the comment character and the comment
+let NERDSpaceDelims=1
+
+
 cmap w!! w !sudo tee % >/dev/null
-
-" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-
 
 
 "===============================================================================
