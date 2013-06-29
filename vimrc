@@ -1,4 +1,5 @@
 " Inspired by https://github.com/terryma/dotfiles/blob/master/.vimrc
+"             https://github.com/bling/dotvim/blob/master/vimrc
 
 " Disable vi-compatibility
 set nocompatible
@@ -311,6 +312,41 @@ nnoremap dd dd
 " Tab: Go to matching element
 nnoremap <Tab> %
 
+"Make <c-l> clear the highlight as well as redraw
+nnoremap <C-L> :nohls<CR><C-L>
+
+
+"===============================================================================
+" Insert Mode Key Mappings
+"===============================================================================
+
+" Clear highlight and redraw
+inoremap <C-L> <C-O>:nohls<CR>
+
+" Map jk -> escape
+inoremap jk <esc>
+
+" Ctrl-w: Delete previous word, create undo point
+inoremap <C-w> <c-g>u<c-w>
+
+" Ctrl-e: Go to end of line
+inoremap <c-e> <esc>A
+
+" Ctrl-a: Go to begin of line
+inoremap <c-a> <esc>I
+
+" Ctrl-h: Move word left
+inoremap <c-h> <c-o>b
+
+" Ctrl-j: Move cursor up
+inoremap <expr> <c-j> pumvisible() ? "\<C-e>\<Down>" : "\<Down>"
+
+" Ctrl-k: Move cursor up
+inoremap <expr> <c-k> pumvisible() ? "\<C-e>\<Up>" : "\<Up>"
+
+" Ctrl-l: Move word right
+inoremap <c-l> <c-o>w
+
 
 "===============================================================================
 " Macros
@@ -416,9 +452,9 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_at_startup = 1
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
+"inoremap <expr><C-e> neocomplete#cancel_popup()
 inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
+"inoremap <expr><C-l> neocomplete#complete_common_string()
 
 
 "===============================================================================
@@ -473,7 +509,8 @@ nmap <space> [unite]
 
 " General fuzzy search
 nnoremap <silent> [unite]<space> :<C-u>Unite
-      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
+            \ -toggle -auto-resize
+            \ -buffer-name=mixed file_rec/async buffer file_mru bookmark<CR><C-u>
 
 " Quick registers
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
@@ -498,10 +535,12 @@ nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
 
 " Quickly switch lcd
 nnoremap <silent> [unite]d
-      \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
+            \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
 
 " Quick file search
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
+nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files
+            \ -toggle -auto-resize
+            \ file_rec/async file/new<CR><C-u>
 
 " Quick grep from cwd
 nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
@@ -575,30 +614,28 @@ function! s:unite_settings()
 endfunction
 
 
-" ----------
+"===============================================================================
 " Processing
-" ----------
+"===============================================================================
 let g:use_processing_java = 1
 
 
-" -------
-" Mapping
-" -------
+"===============================================================================
+" EasyMotion
+"===============================================================================
 let g:EasyMotion_mapping_t = '_t'
+
+
 cmap w!! w !sudo tee % >/dev/null
-nmap <unique> <silent> <Leader>s :Gstatus<CR>
-nmap <unique> <silent> <Leader>gc :Gcommit<CR>
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-"Make <c-l> clear the highlight as well as redraw
-nnoremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
 
-"Map jk -> escape
-inoremap jk <esc>
 
+"===============================================================================
+" Colour Scheme
+"===============================================================================
 if !has('gui_running')
     " Compatibility for Terminal
     let g:solarized_termtrans=1
