@@ -154,7 +154,7 @@ runtime macros/matchit.vim
 " Font
 " ----
 if s:is_macvim
-    set guifont = Anonymous\ Pro:h14
+    set guifont=Anonymous\ Pro:h14
     set transparency=2
 else
     set guifont=Mensch\ 11
@@ -310,4 +310,11 @@ inoremap <C-L> <C-O>:nohls<CR>
 "Map jk -> escape
 inoremap jk <esc>
 
+if !has('gui_running')
+    " Compatibility for Terminal
+    let g:solarized_termtrans=1
+
+    " Make Solarized use 256 colors for Terminal support
+    let g:solarized_termcolors=256
+endif
 colorscheme solarized
