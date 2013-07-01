@@ -6,10 +6,60 @@ set nocompatible
 
 
 "===============================================================================
-" Pathagen
+" NeoBundle
 "===============================================================================
-call pathogen#infect()
-call pathogen#helptags()
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Use https protocol over proxy.
+let g:neobundle#types#git#default_protocol = 'https'
+
+call neobundle#rc(expand('~/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'vim-scripts/paredit.vim'
+NeoBundle 'sophacles/vim-processing'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'tpope/vim-classpath'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'tsukkee/unite-tag'
+
+
+" Enable file type detection.
+filetype plugin indent on
+syntax enable
+
+NeoBundleCheck
 
 
 "===============================================================================
@@ -29,9 +79,6 @@ augroup MyAutoCmd
     " Remvoe all autocommands for this group
     autocmd!
 augroup END
-
-" Enable file type detection.
-filetype plugin indent on
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -633,6 +680,15 @@ let g:EasyMotion_mapping_t = '_t'
 
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
+
+
+"===============================================================================
+" Syntastic
+"===============================================================================
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_warning_symbol = '≈'
 
 
 cmap w!! w !sudo tee % >/dev/null
