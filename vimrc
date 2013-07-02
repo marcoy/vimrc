@@ -229,7 +229,7 @@ set cursorline
 
 " disable sounds
 set noerrorbells
-set novisualbell
+set visualbell
 set t_vb=
 
 " remap K to vim help
@@ -666,12 +666,6 @@ endfunction
 " Processing
 "===============================================================================
 let g:use_processing_java = 1
-
-
-"===============================================================================
-" EasyMotion
-"===============================================================================
-let g:EasyMotion_mapping_t = '_t'
 
 
 "===============================================================================
