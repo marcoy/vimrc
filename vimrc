@@ -54,7 +54,6 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tsukkee/unite-tag'
 
-
 " Enable file type detection.
 filetype plugin indent on
 syntax enable
@@ -446,7 +445,12 @@ autocmd BufReadPost *
 "===============================================================================
 " Tagbar
 "===============================================================================
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+if filereadable("/u/marcoy/opt/ctags/bin/ctags")
+    let g:tagbar_ctags_bin = '/u/marcoy/opt/ctags/bin/ctags'
+elseif fileread("/usr/local/bin/ctags")
+    let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+endif
+
 let g:tagbar_autofocus = 1
 nmap <unique> <silent> <Leader>b :TagbarToggle<CR>
 
@@ -498,6 +502,19 @@ let g:clojure_align_multiline_strings = 0
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#enable_refresh_always = 1
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplete#close_popup()
 "inoremap <expr><C-e> neocomplete#cancel_popup()
@@ -683,6 +700,13 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+
+
+"===============================================================================
+" Supertab
+"===============================================================================
+let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "<C-n>"
 
 
 cmap w!! w !sudo tee % >/dev/null
