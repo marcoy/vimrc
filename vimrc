@@ -53,6 +53,7 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'mattn/zencoding-vim'
 
 " Enable file type detection.
 filetype plugin indent on
@@ -514,7 +515,7 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplete#close_popup()
 "inoremap <expr><C-e> neocomplete#cancel_popup()
