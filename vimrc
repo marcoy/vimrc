@@ -447,7 +447,7 @@ autocmd BufReadPost *
 "===============================================================================
 if filereadable("/u/marcoy/opt/ctags/bin/ctags")
     let g:tagbar_ctags_bin = '/u/marcoy/opt/ctags/bin/ctags'
-elseif fileread("/usr/local/bin/ctags")
+elseif filereadable("/usr/local/bin/ctags")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 endif
 
@@ -706,7 +706,7 @@ let g:syntastic_style_warning_symbol = '≈'
 " Supertab
 "===============================================================================
 let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabDefaultCompletionType = "<C-n>"
+let g:SuperTabContextDefaultCompletionType = "<C-n>"
 
 
 cmap w!! w !sudo tee % >/dev/null
