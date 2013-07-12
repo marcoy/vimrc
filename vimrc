@@ -31,6 +31,7 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Lokaltog/vim-easymotion'
