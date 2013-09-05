@@ -55,6 +55,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'bling/vim-airline'
+" NeoBundle 'itchyny/lightline.vim'
 
 " Enable file type detection.
 filetype plugin indent on
@@ -409,7 +411,7 @@ if s:is_macvim
     set guifont=Anonymous\ Pro:h14
     set transparency=2
 else
-    set guifont=Mensch\ 11
+    set guifont=Menlo\ 11
 endif
 
 
@@ -542,7 +544,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ ], '\|'))
 
-call unite#custom#source('file,file/new,buffer,file_rec,line',
+call unite#custom#source('file,file/new,buffer,file_rec,line,outline',
                        \ 'matchers', 'matcher_fuzzy')
 
 " Start in insert mode
@@ -709,6 +711,22 @@ let g:syntastic_style_warning_symbol = '≈'
 "===============================================================================
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<C-n>"
+
+
+"===============================================================================
+" Airline
+"===============================================================================
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_symbols = {}
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_powerline_fonts=0
 
 
 cmap w!! w !sudo tee % >/dev/null
