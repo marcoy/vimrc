@@ -56,7 +56,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'bling/vim-airline'
-" NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'https://bitbucket.org/ludovicchabant/vim-lawrencium'
 
 " Enable file type detection.
 filetype plugin indent on
@@ -436,6 +436,9 @@ autocmd FileType ant setlocal sts=2 sw=2 ts=2 et
 autocmd FileType html setlocal sts=2 sw=2 ts=2 et
 autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
 autocmd FileType json setlocal syntax=javascript
+
+autocmd BufNewFile,BufRead software.mi set ft=config
+autocmd BufNewFile,BufRead software.local set ft=config
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
