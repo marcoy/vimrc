@@ -547,7 +547,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ ], '\|'))
 
-call unite#custom#source('file,file/new,buffer,file_rec,line,outline',
+call unite#custom#source('file,file/new,buffer,file_rec,line,outline,tab',
                        \ 'matchers', 'matcher_fuzzy')
 
 " Start in insert mode
@@ -634,6 +634,9 @@ nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
 
 " Quick bookmarks
 nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
+
+" Quick tab
+nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=tab -auto-resize tab<CR>
 
 " Fuzzy search from current buffer
 " nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
