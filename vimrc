@@ -40,7 +40,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'vim-scripts/paredit.vim'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
@@ -56,6 +55,8 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'guns/vim-sexp'
 NeoBundle 'https://bitbucket.org/ludovicchabant/vim-lawrencium'
 
 " Enable file type detection.
@@ -296,6 +297,11 @@ set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+
+" Enable meta key
+if s:is_macvim
+    set macmeta
+endif
 
 "return the syntax highlight group under the cursor ''
 function! StatuslineCurrentHighlight()
@@ -733,6 +739,12 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_powerline_fonts=0
+
+
+"===============================================================================
+" vim-sneak
+"===============================================================================
+let g:sneak#streak = 1
 
 
 cmap w!! w !sudo tee % >/dev/null
