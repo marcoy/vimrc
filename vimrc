@@ -32,6 +32,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -723,7 +724,11 @@ let g:SuperTabContextDefaultCompletionType = "<C-n>"
 "===============================================================================
 " Airline
 "===============================================================================
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_symbols = {}
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
@@ -740,6 +745,27 @@ let g:airline_powerline_fonts=0
 " vim-sneak
 "===============================================================================
 let g:sneak#streak = 1
+
+
+"===============================================================================
+" vimfiler
+"===============================================================================
+" Edit file by tabedit
+let g:vimfiler_as_default_explorer = 1
+
+" Enable file operation commands.
+let g:vimfiler_safe_mode_by_default = 0
+
+" Like Textmate icons.
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+
+" Leader mapping
+nnoremap <Leader>e :VimFilerExplorer<CR>
+nnoremap <Leader>t :VimFiler<CR>
 
 
 cmap w!! w !sudo tee % >/dev/null
