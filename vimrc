@@ -58,7 +58,8 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'guns/vim-sexp'
-NeoBundle 'ludovicchabant/vim-lawrencium'
+NeoBundle 'atweiden/vim-dragvisuals'
+NeoBundle 'https://bitbucket.org/ludovicchabant/vim-lawrencium'
 
 " Enable file type detection.
 filetype plugin indent on
@@ -83,6 +84,33 @@ let s:is_macvim = has('gui_macvim')
 augroup MyAutoCmd
     " Remvoe all autocommands for this group
     autocmd!
+augroup END
+
+"======[ Magically build interim directories if necessary ]======
+function! AskQuit (msg, options, quit_option)
+    if confirm(a:msg, a:options) == a:quit_option
+        exit
+    endif
+endfunction
+
+function! EnsureDirExists ()
+    let required_dir = expand("%:h")
+    if !isdirectory(required_dir)
+        call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
+             \       "&Create it\nor &Quit?", 2)
+
+        try
+            call mkdir( required_dir, 'p' )
+        catch
+            call AskQuit("Can't create '" . required_dir . "'",
+            \            "&Quit\nor &Continue anyway?", 1)
+        endtry
+    endif
+endfunction
+
+augroup AutoMkdir
+    autocmd!
+    autocmd  BufNewFile  *  :call EnsureDirExists()
 augroup END
 
 " allow backspacing over everything in insert mode
@@ -211,6 +239,16 @@ set ttyfast
 
 " Use cscope and tag file
 set cst
+
+"           +--Disable hlsearch while loading viminfo
+"           | +--Remember marks for last 50 files
+"           | |    +--Remember up to 10000 lines in each register
+"           | |    |      +--Remember up to 1MB in each register
+"           | |    |      |     +--Remember last 1000 search patterns
+"           | |    |      |     |     +---Remember last 1000 commands
+"           | |    |      |     |     |
+"           v v    v      v     v     v
+set viminfo=h,'100,<10000,s1000,/1000,:1000,!
 
 " Spelling highlights. Use underline in term to prevent cursorline highlights
 " from interfering
@@ -355,7 +393,8 @@ nnoremap <silent> F :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>F
 nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
 
 " ;: Command mode
-noremap ; :
+nnoremap ; :
+" nnoremap : ;
 
 " c: Change into the blackhole register to not clobber the last yank
 nnoremap c "_c
@@ -406,9 +445,76 @@ inoremap <c-l> <c-o>w
 
 
 "===============================================================================
-" Macros
+" Visual Mode Key Mappings
+"===============================================================================
+" When shifting, retain selection over multiple shifts...
+vmap <expr> > KeepVisualSelection(">")
+vmap <expr> < KeepVisualSelection("<")
+
+function! KeepVisualSelection(cmd)
+    set nosmartindent
+    if mode() ==# "V"
+        return a:cmd . ":set smartindent\<CR>gv"
+    else
+        return a:cmd . ":set smartindent\<CR>"
+    endif
+endfunction
+
+
+"===============================================================================
+" Command Mode Key Mappings
+"===============================================================================
+cmap w!! w !sudo tee % >/dev/null
+
+"======[ Show help files in a new tab, plus add a shortcut for helpg ]======
+"Only apply to .txt files...
+augroup HelpInTabs
+    autocmd!
+    autocmd BufEnter  *.txt   call HelpInNewTab()
+augroup END
+
+"Only apply to help files...
+function! HelpInNewTab ()
+    if &buftype == 'help'
+        "Convert the help window to a tab...
+        execute "normal \<C-W>T"
+    endif
+endfunction
+
+"Simulate a regular cmap, but only if the expansion starts at column 1...
+function! CommandExpandAtCol1 (from, to)
+    if strlen(getcmdline()) || getcmdtype() != ':'
+        return a:from
+    else
+        return a:to
+    endif
+endfunction
+
+"Expand hh -> helpg...
+cmap <expr> hh CommandExpandAtCol1('hh','helpg ')
+
+
+"===============================================================================
+" Matchit
 "===============================================================================
 runtime macros/matchit.vim
+
+" Match angle brackets...
+set matchpairs+=<:>,«:»
+
+" Match double-angles, XML tags and Perl keywords...
+let TO = ':'
+let OR = ','
+let b:match_words =
+\
+\                          '<<' .TO. '>>'
+\
+\.OR.     '<\@<=\(\w\+\)[^>]*>' .TO. '<\@<=/\1>'
+\
+\.OR. '\<if\>' .TO. '\<elsif\>' .TO. '\<else\>'
+
+" Engage debugging mode to overcome bug in matchpairs matching...
+let b:match_debug = 1
 
 
 "===============================================================================
@@ -543,6 +649,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
       \ '\.git/',
+      \ '\.hg/',
       \ '\.pyc',
       \ '\.class',
       \ 'git5/.*/review/',
@@ -768,7 +875,14 @@ nnoremap <Leader>e :VimFilerExplorer<CR>
 nnoremap <Leader>t :VimFiler<CR>
 
 
-cmap w!! w !sudo tee % >/dev/null
+"===============================================================================
+" Dragvisuals
+"===============================================================================
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
 
 
 "===============================================================================
