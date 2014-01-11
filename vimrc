@@ -59,7 +59,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'guns/vim-sexp'
 NeoBundle 'atweiden/vim-dragvisuals'
-NeoBundle 'https://bitbucket.org/ludovicchabant/vim-lawrencium'
+NeoBundle 'ludovicchabant/vim-lawrencium'
 
 " Enable file type detection.
 filetype plugin indent on
