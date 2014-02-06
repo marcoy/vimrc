@@ -34,6 +34,7 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'ervandew/supertab'
@@ -895,4 +896,5 @@ if !has('gui_running')
     " Make Solarized use 256 colors for Terminal support
     let g:solarized_termcolors=256
 endif
-colorscheme solarized
+" colorscheme solarized
+colorscheme vividchalk
