@@ -1,0 +1,12 @@
+snippet main "Clojure main" !b
+(defn -main
+  [& args]
+  $0)
+endsnippet
+
+snippet defn "function" !b
+(defn ${1:name}
+  "${2:doc-string}"
+  [${3:args}]
+  $4)
+endsnippet
