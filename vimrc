@@ -33,23 +33,23 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'kshenoy/vim-signature'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'sophacles/vim-processing'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'tpope/vim-classpath'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'SirVer/ultisnips'
 NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'mileszs/ack.vim'
+NeoBundle 'guns/vim-sexp'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
@@ -58,7 +58,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'guns/vim-sexp'
 NeoBundle 'atweiden/vim-dragvisuals'
 NeoBundle 'ludovicchabant/vim-lawrencium'
 
@@ -551,9 +550,6 @@ autocmd FileType html setlocal sts=2 sw=2 ts=2 et
 autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
 autocmd FileType json setlocal syntax=javascript
 
-autocmd BufNewFile,BufRead software.mi set ft=config
-autocmd BufNewFile,BufRead software.local set ft=config
-
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -797,12 +793,6 @@ function! s:unite_settings()
         imap <buffer> <C-_> <Plug>(unite_exit)
     endif
 endfunction
-
-
-"===============================================================================
-" Processing
-"===============================================================================
-let g:use_processing_java = 1
 
 
 "===============================================================================
