@@ -60,6 +60,8 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'atweiden/vim-dragvisuals'
 NeoBundle 'ludovicchabant/vim-lawrencium'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'Yggdroot/indentLine'
 
 " Enable file type detection.
 filetype plugin indent on
@@ -880,6 +882,22 @@ vmap  <expr>  D        DVB_Duplicate()
 " UltiSnips
 "===============================================================================
 let g:UltiSnipsEditSplit = 'horizontal'
+
+
+"===============================================================================
+" indentLine
+"===============================================================================
+let g:indentLine_char = '┊'
+
+
+"===============================================================================
+" Eclim
+"===============================================================================
+let g:EclimCompletionMethod = 'omnifunc'
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
 
 "===============================================================================
