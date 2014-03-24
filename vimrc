@@ -62,6 +62,7 @@ NeoBundle 'atweiden/vim-dragvisuals'
 NeoBundle 'ludovicchabant/vim-lawrencium'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'honza/vim-snippets'
 
 " Enable file type detection.
 filetype plugin indent on
