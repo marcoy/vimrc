@@ -6,24 +6,34 @@ apply plugin: 'application'
 /* IDE */
 apply plugin: 'eclipse'
 
-/* Web Application */
+/* Web Application
+apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
-apply plugin: 'jetty'
+apply plugin: 'jetty' */
+
+project.version = '${1:0.0.1}'
 
 // mainClassName = ''
 
+/* Extra Properties */
+ext {
+    springVersion = '4.0.3.RELEASE'${3}
+}
+
 jar {
-    baseName = '${1:JarName}'
-    version = '0.1.0'
+    baseName = '${project.name}'
+    version = '$1'
 }
 
 repositories {
     mavenCentral()
-    maven { url "http://clojars.org/repo" }
+    maven { url 'http://clojars.org/repo' }
 }
 
 dependencies {
-    compile '${2:org.springframework:spring-context:4.0.3.RELEASE}'
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+    compile "javax.servlet:servlet-api:2.5"
 }
 
 task wrapper(type: Wrapper) {
