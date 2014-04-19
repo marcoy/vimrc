@@ -52,8 +52,7 @@ NeoBundle 'guns/vim-sexp'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'thinca/vim-ref'
+" NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
@@ -61,7 +60,6 @@ NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'atweiden/vim-dragvisuals'
 NeoBundle 'ludovicchabant/vim-lawrencium'
 NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'tfnico/vim-gradle'
 
@@ -884,12 +882,6 @@ vmap  <expr>  D        DVB_Duplicate()
 " UltiSnips
 "===============================================================================
 let g:UltiSnipsEditSplit = 'horizontal'
-
-
-"===============================================================================
-" indentLine
-"===============================================================================
-let g:indentLine_char = '┊'
 
 
 "===============================================================================
