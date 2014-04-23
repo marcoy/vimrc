@@ -33,6 +33,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
@@ -402,7 +403,7 @@ nnoremap ; :
 nnoremap c "_c
 
 " d: Delete into the blackhole register to not clobber the last yank
-nnoremap d "_d
+" nnoremap d "_d
 
 " dd: I use this often to yank a single line, retain its original behavior
 nnoremap dd dd
