@@ -40,7 +40,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '1.12'
 }
 endsnippet
 
@@ -52,7 +52,7 @@ buildscript {
         maven { url "http://repo.spring.io/milestone" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.1.BUILD-SNAPSHOT")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
     }
 }
 
@@ -89,10 +89,11 @@ repositories {
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
-    compile "com.fasterxml.jackson.core:jackson-databind:2.3.2"
+    compile "com.google.guava:guava:${guavaVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind"
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '1.12'
 }
 endsnippet
