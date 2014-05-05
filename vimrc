@@ -44,7 +44,7 @@ NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'ervandew/supertab'
+" NeoBundle 'ervandew/supertab'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'SirVer/ultisnips'
@@ -545,7 +545,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ant setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType clojure setlocal omnifunc=vimclojure#OmniCompletion
-autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
 
 autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
 autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
@@ -617,15 +616,17 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#enable_refresh_always = 1
-let g:neocomplete#use_vimproc=1
+let g:neocomplete#use_vimproc = 1
+let g:neocomplete#min_keyword_length = 3
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplete#smart_close_popup() . "\<CR>"
+  " return neocomplete#smart_close_popup() . "\<CR>"
   " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -635,6 +636,24 @@ inoremap <expr><C-y> neocomplete#close_popup()
 "inoremap <expr><C-e> neocomplete#cancel_popup()
 inoremap <expr><C-g> neocomplete#undo_completion()
 "inoremap <expr><C-l> neocomplete#complete_common_string()
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+let g:neocomplete#force_omni_input_patterns.java = '\%(\h\w*\|)\)\.\w*'
+
+" For smart TAB completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+       \ <SID>check_back_space() ? "\<TAB>" :
+       \ neocomplete#start_manual_complete()
+function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
 
 "===============================================================================
@@ -822,6 +841,7 @@ let g:syntastic_style_warning_symbol = '≈'
 "===============================================================================
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<C-n>"
+let g:SuperTabCrMapping = 0
 
 
 "===============================================================================
@@ -885,13 +905,14 @@ vmap  <expr>  D        DVB_Duplicate()
 " UltiSnips
 "===============================================================================
 let g:UltiSnipsEditSplit = 'horizontal'
-" let g:UltiSnipsExpandTrigger="<C-CR>"
+let g:UltiSnipsExpandTrigger="<C-CR>"
 
 
 "===============================================================================
 " Eclim
 "===============================================================================
 let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimJavaSearchSingleResult = 'tabnew'
 nnoremap <leader>i :JavaImport<CR>
 nnoremap <CR> :JavaSearchContext<CR>
 
