@@ -617,6 +617,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#enable_refresh_always = 1
+let g:neocomplete#use_vimproc=1
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -884,16 +885,13 @@ vmap  <expr>  D        DVB_Duplicate()
 " UltiSnips
 "===============================================================================
 let g:UltiSnipsEditSplit = 'horizontal'
+" let g:UltiSnipsExpandTrigger="<C-CR>"
 
 
 "===============================================================================
 " Eclim
 "===============================================================================
 let g:EclimCompletionMethod = 'omnifunc'
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 nnoremap <leader>i :JavaImport<CR>
 nnoremap <CR> :JavaSearchContext<CR>
 
