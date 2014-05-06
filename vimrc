@@ -915,7 +915,8 @@ let g:EclimLocateFileFuzzy = 1
 command -range -nargs=* Google call eclim#web#SearchEngine(
   \ 'http://www.google.com/search?q=<query>', <q-args>, <line1>, <line2>)
 nnoremap <leader>i :JavaImport<CR>
-nnoremap <CR> :JavaSearchContext<CR>
+autocmd FileType java nnoremap <silent><buffer><CR> :JavaSearchContext<CR>
+autocmd FileType java nnoremap <leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
 
 
 "===============================================================================
