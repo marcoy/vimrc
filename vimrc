@@ -199,6 +199,8 @@ set wildignore+=*/.nx/**,*.app
 " Allow changing buffer without saving it first
 set hidden
 
+set switchbuf=usetab,newtab
+
 " Case insensitive search
 set ignorecase
 set smartcase
@@ -705,6 +707,9 @@ let g:unite_source_file_mru_time_format = ''
 let g:unite_enable_smart_case = 1
 let g:unite_prompt = '» '
 
+let g:unite_source_rec_max_cache_files = 5000
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+
 " Map space to the prefix for Unite
 nnoremap [unite] <Nop>
 nmap <space> [unite]
@@ -716,9 +721,6 @@ nnoremap <silent> [unite]<space> :<C-u>Unite
 
 " Quick registers
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-
-" Quick buffer and mru
-nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
 
 " Quick yank history
 nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
@@ -754,7 +756,7 @@ nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
 
 " Quick MRU search
-nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
+nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru buffer<CR>
 
 " Quick find
 nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
@@ -763,14 +765,10 @@ nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
 nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
 
 " Quick bookmarks
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
+nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffer_bookmarks buffer bookmark<CR>
 
 " Quick tab
 nnoremap <silent> [unite]t :<C-u>Unite -buffer-name=tab -auto-resize tab<CR>
-
-" Fuzzy search from current buffer
-" nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
-      " \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
 
 " Quick commands
 nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
@@ -913,6 +911,9 @@ let g:UltiSnipsExpandTrigger="<C-CR>"
 "===============================================================================
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimJavaSearchSingleResult = 'tabnew'
+let g:EclimLocateFileFuzzy = 1
+command -range -nargs=* Google call eclim#web#SearchEngine(
+  \ 'http://www.google.com/search?q=<query>', <q-args>, <line1>, <line2>)
 nnoremap <leader>i :JavaImport<CR>
 nnoremap <CR> :JavaSearchContext<CR>
 
