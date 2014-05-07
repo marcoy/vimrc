@@ -64,6 +64,7 @@ NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'vim-scripts/argtextobj.vim'
 
 " Enable file type detection.
 filetype plugin indent on
