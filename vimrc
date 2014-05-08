@@ -918,6 +918,7 @@ command -range -nargs=* Google call eclim#web#SearchEngine(
 nnoremap <leader>i :JavaImport<CR>
 autocmd FileType java nnoremap <silent><buffer><CR> :JavaSearchContext<CR>
 autocmd FileType java nnoremap <leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
+autocmd FileType java nnoremap <leader>ut :JUnit<CR>
 
 
 "===============================================================================
