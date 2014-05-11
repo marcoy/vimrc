@@ -200,8 +200,6 @@ set wildignore+=*/.nx/**,*.app
 " Allow changing buffer without saving it first
 set hidden
 
-set switchbuf=usetab,newtab
-
 " Case insensitive search
 set ignorecase
 set smartcase
@@ -564,13 +562,24 @@ autocmd BufReadPost *
 \   exe "normal! g`\"" |
 \ endif
 
+augroup quickfix_mappings
+    autocmd!
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> h  <C-W><CR><C-w>K
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> H  <C-W><CR><C-w>K<C-w>b
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> o  <CR>
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> t  <C-w><CR><C-w>T
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> T  <C-w><CR><C-w>TgT<C-W><C-W>
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> v  <C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> e  <CR><C-w><C-w>:cclose<CR>
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> go <CR>:copen<CR>
+    autocmd BufReadPost quickfix nnoremap <silent> <buffer> q  :lclose<CR>
+augroup END
+
 
 "===============================================================================
 " Tagbar
 "===============================================================================
-if filereadable("/u/marcoy/opt/ctags/bin/ctags")
-    let g:tagbar_ctags_bin = '/u/marcoy/opt/ctags/bin/ctags'
-elseif filereadable("/usr/local/bin/ctags")
+if filereadable("/usr/local/bin/ctags")
     let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 endif
 
@@ -905,6 +914,14 @@ vmap  <expr>  D        DVB_Duplicate()
 "===============================================================================
 let g:UltiSnipsEditSplit = 'horizontal'
 let g:UltiSnipsExpandTrigger="<C-CR>"
+
+
+"===============================================================================
+" Ag
+"===============================================================================
+let g:agprg="ag --column --smart-case"
+let g:aghighlight=1
+let g:ag_mapping_message=0
 
 
 "===============================================================================
