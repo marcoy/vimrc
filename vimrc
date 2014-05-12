@@ -758,7 +758,7 @@ nnoremap <silent> [unite]d
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files
             \ -toggle -auto-resize
-            \ file_rec/async:! file/new<CR><CR>
+            \ file_rec/async:! file/new<CR>
 
 " Quick grep from cwd
 nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
