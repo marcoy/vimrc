@@ -12,6 +12,8 @@ if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+call neobundle#begin(expand('~/.vim/bundle/'))
+
 " Use https protocol over proxy.
 let g:neobundle#types#git#default_protocol = 'https'
 let g:neobundle#install_max_processes = 10
@@ -67,6 +69,14 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'vim-scripts/argtextobj.vim'
+NeoBundle 'michaeljsmith/vim-indent-object'
+
+" Haskell
+NeoBundle 'dag/vim2hs'
+NeoBundleLazy 'eagletmt/neco-ghc', { 'external_commands' : 'ghc-mod' }
+NeoBundleLazy 'eagletmt/ghcmod-vim', { 'external_commands' : 'ghc-mod' }
+
+call neobundle#end()
 
 " Enable file type detection.
 filetype plugin indent on
@@ -940,6 +950,15 @@ nnoremap <leader>i :JavaImport<CR>
 autocmd FileType java nnoremap <silent><buffer><CR> :JavaSearchContext<CR>
 autocmd FileType java nnoremap <leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
 autocmd FileType java nnoremap <leader>ut :JUnit<CR>
+
+
+"===============================================================================
+" Haskell
+"===============================================================================
+if neobundle#is_sourced('neco-ghc')
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+    let g:necoghc_enable_detailed_browse = 1
+endif
 
 
 "===============================================================================
