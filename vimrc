@@ -73,8 +73,8 @@ NeoBundle 'michaeljsmith/vim-indent-object'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
-NeoBundleLazy 'eagletmt/neco-ghc', { 'external_commands' : 'ghc-mod' }
-NeoBundleLazy 'eagletmt/ghcmod-vim', { 'external_commands' : 'ghc-mod' }
+NeoBundle 'eagletmt/neco-ghc', { 'external_commands' : 'ghc-mod' }
+NeoBundle 'eagletmt/ghcmod-vim', { 'external_commands' : 'ghc-mod' }
 
 call neobundle#end()
 
