@@ -59,6 +59,7 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Raimondi/delimitMate'
 " NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'hewes/unite-gtags'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
@@ -743,6 +744,8 @@ let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores 
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --line-numbers --skip-vcs-ignores --hidden'
 let g:unite_source_grep_recursive_opt = ''
+
+let g:unite_matcher_fuzzy_max_input_length = 40
 
 " Map space to the prefix for Unite
 nnoremap [unite] <Nop>
