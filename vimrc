@@ -16,7 +16,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Use https protocol over proxy.
 let g:neobundle#types#git#default_protocol = 'https'
-let g:neobundle#install_max_processes = 10
+let g:neobundle#install_max_processes = 20
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
