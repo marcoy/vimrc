@@ -688,6 +688,9 @@ endfunction
 " Use the fuzzy matcher for everything
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
+" sort buffers by number
+call unite#custom#source('buffer', 'sorters', 'sorter_reverse')
+
 " Use the rank sorter for everything
 " call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#filters#sorter_default#use(['sorter_selecta'])
@@ -722,18 +725,24 @@ let g:unite_split_rule = "botright"
 " Shorten the default update date of 500ms
 let g:unite_update_time = 200
 
-let g:unite_source_file_mru_limit = 1000
+let g:unite_source_file_mru_long_limit = 5000
 let g:unite_cursor_line_highlight = 'TabLineSel'
 " let g:unite_abbr_highlight = 'TabLine'
+"
+let g:neomru#file_mru_limit = 100
 
 let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_file_mru_time_format = ''
+let g:unite_source_file_mru_time_format = '(%A %e %b, %T) '
 
 let g:unite_enable_smart_case = 1
 let g:unite_prompt = '» '
 
 let g:unite_source_rec_max_cache_files = 5000
 let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --line-numbers --skip-vcs-ignores --hidden'
+let g:unite_source_grep_recursive_opt = ''
 
 " Map space to the prefix for Unite
 nnoremap [unite] <Nop>
@@ -769,7 +778,7 @@ nnoremap <silent> [unite]d
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files
             \ -toggle -auto-resize
-            \ file_rec/async:! file/new<CR>
+            \ file_rec/async file/new<CR>
 
 " Quick grep from cwd
 nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
@@ -937,6 +946,7 @@ let g:UltiSnipsExpandTrigger="<C-CR>"
 let g:agprg="ag --column --smart-case"
 let g:aghighlight=1
 let g:ag_mapping_message=0
+nnoremap <leader>ag :Ag!<CR>
 
 
 "===============================================================================
