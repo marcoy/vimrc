@@ -59,7 +59,6 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'Raimondi/delimitMate'
 " NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'hewes/unite-gtags'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
@@ -71,6 +70,8 @@ NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'hewes/unite-gtags',{ 'external_commands' : 'gtags' }
+NeoBundle 'vim-scripts/gtags.vim',{ 'external_commands' : 'gtags' }
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -976,6 +977,23 @@ endif
 
 
 "===============================================================================
+" Misc function
+"===============================================================================
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
+
+
+"===============================================================================
 " Colour Scheme
 "===============================================================================
 if !has('gui_running')
@@ -985,5 +1003,6 @@ if !has('gui_running')
     " Make Solarized use 256 colors for Terminal support
     let g:solarized_termcolors=256
 endif
+
 " colorscheme solarized
 colorscheme vividchalk
