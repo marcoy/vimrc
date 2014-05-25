@@ -72,6 +72,7 @@ NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'hewes/unite-gtags',{ 'external_commands' : 'gtags' }
 NeoBundle 'vim-scripts/gtags.vim',{ 'external_commands' : 'gtags' }
+NeoBundle 't9md/vim-choosewin'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
