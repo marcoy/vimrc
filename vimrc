@@ -41,7 +41,7 @@ NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-classpath'
+" NeoBundle 'tpope/vim-classpath'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-unimpaired'
@@ -705,6 +705,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.git/',
       \ '\.hg/',
       \ '\.svn/',
+      \ '\.cabal-sandbox/',
       \ '\.pyc',
       \ '\.class',
       \ 'git5/.*/review/',
@@ -742,7 +743,7 @@ let g:unite_enable_smart_case = 1
 let g:unite_prompt = '» '
 
 let g:unite_source_rec_max_cache_files = 5000
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" --hidden -g ""'
 
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--smart-case --nogroup --nocolor --line-numbers --skip-vcs-ignores --hidden'
