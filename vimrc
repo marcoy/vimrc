@@ -712,7 +712,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ ], '\|'))
 
-call unite#custom#source('file,file/new,buffer,file_rec,line,outline,tab',
+call unite#custom#source('file,file/new,buffer,file_rec,line,outline,tab,bookmark',
                        \ 'matchers', 'matcher_fuzzy')
 
 " Start in insert mode
