@@ -74,6 +74,7 @@ NeoBundle 'hewes/unite-gtags',{ 'external_commands' : 'gtags' }
 NeoBundle 'vim-scripts/gtags.vim',{ 'external_commands' : 'gtags' }
 NeoBundle 't9md/vim-choosewin'
 NeoBundle 'wellle/targets.vim'
+NeoBundle 'junegunn/vim-easy-align'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
