@@ -396,6 +396,8 @@ nnoremap <Leader>sk [s
 nnoremap <Leader>sa zg]s
 nnoremap <Leader>sd 1z=
 nnoremap <Leader>sf z=
+nnoremap <leader>j :%!jq .<CR>
+nnoremap <leader>J :%!jq . -c<CR>
 
 " <Leader>d: Delete the current buffer
 nnoremap <Leader>d :bdelete<CR>
