@@ -398,11 +398,31 @@ nnoremap <Leader>sk [s
 nnoremap <Leader>sa zg]s
 nnoremap <Leader>sd 1z=
 nnoremap <Leader>sf z=
-nnoremap <leader>j :%!jq .<CR>
-nnoremap <leader>J :%!jq . -c<CR>
 
 " <Leader>d: Delete the current buffer
-nnoremap <Leader>d :bdelete<CR>
+nnoremap <unique> <Leader>d :bdelete<CR>
+
+" VimFiler
+nnoremap <unique> <Leader>e :VimFilerExplorer<CR>
+nnoremap <unique> <Leader>t :VimFiler<CR>
+
+" Tagbar
+nnoremap <unique> <silent> <Leader>b :TagbarToggle<CR>
+
+" JSON formatting using jq
+if executable("jq")
+    nnoremap <unique> <Leader>q :%!jq .<CR>
+    nnoremap <unique> <Leader>Q :%!jq . -c<CR>
+endif
+
+" Ag
+nnoremap <unique> <Leader>ag :Ag!<CR>
+
+" Eclim
+autocmd FileType java nnoremap <unique> <Leader>ji :JavaImport<CR>
+autocmd FileType java nnoremap <unique> <Leader>jio :JavaImportOrganize<CR>
+autocmd FileType java nnoremap <unique> <Leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
+autocmd FileType java nnoremap <unique> <Leader>ju :JUnit<CR>
 
 
 "===============================================================================
@@ -606,7 +626,6 @@ if filereadable("/usr/local/bin/ctags")
 endif
 
 let g:tagbar_autofocus = 1
-nmap <unique> <silent> <Leader>b :TagbarToggle<CR>
 
 
 "===============================================================================
@@ -751,6 +770,7 @@ let g:unite_prompt = '» '
 let g:unite_source_rec_max_cache_files = 5000
 let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
             \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
+            \ '--ignore "dist" ' .
             \ '--ignore ".gradle" --hidden -g ""'
 
 let g:unite_source_grep_command = 'ag'
@@ -937,9 +957,6 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_marked_file_icon = '*'
 
-" Leader mapping
-nnoremap <Leader>e :VimFilerExplorer<CR>
-nnoremap <Leader>t :VimFiler<CR>
 
 
 "===============================================================================
@@ -965,7 +982,6 @@ let g:UltiSnipsExpandTrigger="<C-CR>"
 let g:agprg="ag --column --smart-case"
 let g:aghighlight=1
 let g:ag_mapping_message=0
-nnoremap <leader>ag :Ag!<CR>
 
 
 "===============================================================================
@@ -976,10 +992,7 @@ let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimLocateFileFuzzy = 1
 command -range -nargs=* Google call eclim#web#SearchEngine(
   \ 'http://www.google.com/search?q=<query>', <q-args>, <line1>, <line2>)
-nnoremap <leader>i :JavaImport<CR>
 autocmd FileType java nnoremap <silent><buffer><CR> :JavaSearchContext<CR>
-autocmd FileType java nnoremap <leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
-autocmd FileType java nnoremap <leader>ut :JUnit<CR>
 
 
 "===============================================================================
