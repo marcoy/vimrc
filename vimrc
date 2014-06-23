@@ -419,10 +419,10 @@ endif
 nnoremap <unique> <Leader>ag :Ag!<CR>
 
 " Eclim
-autocmd FileType java nnoremap <unique> <Leader>ji :JavaImport<CR>
-autocmd FileType java nnoremap <unique> <Leader>jio :JavaImportOrganize<CR>
-autocmd FileType java nnoremap <unique> <Leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
-autocmd FileType java nnoremap <unique> <Leader>ju :JUnit<CR>
+autocmd FileType java nnoremap <Leader>ji :JavaImport<CR>
+autocmd FileType java nnoremap <Leader>jio :JavaImportOrganize<CR>
+autocmd FileType java nnoremap <Leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
+autocmd FileType java nnoremap <Leader>ju :JUnit<CR>
 
 
 "===============================================================================
