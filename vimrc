@@ -733,6 +733,8 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.gradle/',
       \ '\.pyc',
       \ '\.class',
+      \ 'target/',
+      \ 'dist/',
       \ 'git5/.*/review/',
       \ 'google/obj/',
       \ ], '\|'))
