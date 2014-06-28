@@ -568,7 +568,7 @@ let b:match_debug = 1
 " Font
 "===============================================================================
 if s:is_macvim
-    set guifont=Anonymous\ Pro:h14
+    set guifont=Consolas:h13
     set transparency=2
 else
     set guifont=Menlo\ 11
@@ -733,6 +733,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.gradle/',
       \ '\.pyc',
       \ '\.class',
+      \ '\.repl',
       \ 'target/',
       \ 'dist/',
       \ 'git5/.*/review/',
@@ -772,7 +773,7 @@ let g:unite_prompt = '» '
 let g:unite_source_rec_max_cache_files = 5000
 let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
             \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
-            \ '--ignore "dist" ' .
+            \ '--ignore ".repl" --ignore "dist" ' .
             \ '--ignore ".gradle" --hidden -g ""'
 
 let g:unite_source_grep_command = 'ag'
