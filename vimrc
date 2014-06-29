@@ -571,7 +571,7 @@ if s:is_macvim
     set guifont=Consolas:h13
     set transparency=2
 else
-    set guifont=Menlo\ 11
+    set guifont=Consolas\ 13
 endif
 
 
