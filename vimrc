@@ -458,6 +458,10 @@ nnoremap <Tab> %
 "Make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
 
+" Use \v (magic) by default
+nnoremap / /\v
+vnoremap / /\v
+
 
 "===============================================================================
 " Insert Mode Key Mappings
