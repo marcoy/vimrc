@@ -1009,6 +1009,9 @@ if neobundle#is_sourced('neco-ghc')
     autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
     let g:necoghc_enable_detailed_browse = 1
 endif
+autocmd FileType haskell compiler cabal
+let g:haskell_conceal = 0
+let g:haskell_conceal_enumerations = 0
 
 
 "===============================================================================
