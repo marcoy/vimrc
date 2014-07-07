@@ -997,6 +997,7 @@ let g:ag_mapping_message=0
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimLocateFileFuzzy = 1
+let g:EclimTempFilesEnable = 0
 command -range -nargs=* Google call eclim#web#SearchEngine(
   \ 'http://www.google.com/search?q=<query>', <q-args>, <line1>, <line2>)
 autocmd FileType java nnoremap <silent><buffer><CR> :JavaSearchContext<CR>
