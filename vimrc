@@ -572,7 +572,7 @@ let b:match_debug = 1
 " Font
 "===============================================================================
 if s:is_macvim
-    set guifont=Consolas:h13
+    set guifont=Inconsolata:h14
     set transparency=2
 else
     set guifont=Consolas\ 13
@@ -901,7 +901,6 @@ endfunction
 "===============================================================================
 " NERDCommenter
 "===============================================================================
-
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
 
@@ -989,7 +988,7 @@ let g:UltiSnipsExpandTrigger="<C-CR>"
 "===============================================================================
 " Ag
 "===============================================================================
-let g:agprg="ag --column --smart-case"
+let g:agprg="ag --column --smart-case --follow"
 let g:aghighlight=1
 let g:ag_mapping_message=0
 
