@@ -829,7 +829,10 @@ nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 
 " Quick line using the word under cursor
-nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
+nnoremap <silent> [unite]l :<C-u>Unite -buffer-name=line_search line<CR>
+
+" Quick line using the word under cursor
+nnoremap <silent> [unite]w :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
 
 " Quick MRU search
 nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru buffer<CR>
