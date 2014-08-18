@@ -830,6 +830,11 @@ nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
 " Quick help
 nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
 
+" Quick git search
+nnoremap <silent> [unite]i :<C-u>Unite -buffer-name=git
+            \ -toggle -auto-resize
+            \ file_rec/git:--cached:--others:--exclude-standard<CR>
+
 " Quick line using the word under cursor
 nnoremap <silent> [unite]l :<C-u>Unite -buffer-name=line_search line<CR>
 
