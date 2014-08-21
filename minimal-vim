@@ -3,4 +3,5 @@
 exec vim -Nu <(cat << VIMRC
 set runtimepath+=~/.vim/bundle/unite.vim/,~/.vim/bundle/vimproc/
 let g:unite_source_rec_async_command='ag --nocolor --nogroup --skip-vcs-ignores --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" --ignore ".gradle" --hidden -g ""'
+filetype plugin indent on
 VIMRC)
