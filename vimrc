@@ -69,7 +69,6 @@ NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'hewes/unite-gtags',{ 'external_commands' : 'gtags' }
 NeoBundle 'vim-scripts/gtags.vim',{ 'external_commands' : 'gtags' }
