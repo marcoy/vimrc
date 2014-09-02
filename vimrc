@@ -56,7 +56,8 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'guns/vim-sexp'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'kien/rainbow_parentheses.vim'
+" NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'amdt/vim-niji'
 NeoBundle 'Raimondi/delimitMate'
 " NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
@@ -629,34 +630,6 @@ if filereadable("/usr/local/bin/ctags")
 endif
 
 let g:tagbar_autofocus = 1
-
-
-"===============================================================================
-" Rainbow parentheses
-"===============================================================================
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
 
 
 "===============================================================================
