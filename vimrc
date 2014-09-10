@@ -648,6 +648,7 @@ let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#enable_refresh_always = 1
 let g:neocomplete#use_vimproc = 1
 let g:neocomplete#min_keyword_length = 3
+let g:neocomplete#enable_omni_fallback = 1
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
