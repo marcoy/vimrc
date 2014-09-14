@@ -720,14 +720,22 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ ], '\|'))
 
-call unite#custom#source('file,file/new,buffer,file_rec,line,outline,tab,bookmark',
+call unite#custom#source('file,file/new,buffer,file_rec,file_mru,line,outline,tab,bookmark,directory',
                        \ 'matchers', 'matcher_fuzzy')
 
-" Start in insert mode
-let g:unite_enable_start_insert = 1
+call unite#custom#profile('default', 'context', {
+\   'start_insert': 1,
+\   'prompt': '» ',
+\   'marked_icon':'✓',
+\   'short_source_names': 1,
+\   'update_time': 200,
+\   'cursor_line_highlight': 'CursorLine',
+\ })
 
-" Enable short source name in window
-" let g:unite_enable_short_source_names = 1
+" let g:unite_source_rec_max_cache_files = 5000
+let g:unite_source_rec_max_cache_files = 0
+call unite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep,directory',
+                       \ 'max_candidates', 0)
 
 " Enable history yank source
 let g:unite_source_history_yank_enable = 1
@@ -735,22 +743,16 @@ let g:unite_source_history_yank_enable = 1
 " Open in bottom right
 let g:unite_split_rule = "botright"
 
-" Shorten the default update date of 500ms
-let g:unite_update_time = 200
-
 let g:unite_source_file_mru_long_limit = 5000
-let g:unite_cursor_line_highlight = 'TabLineSel'
 " let g:unite_abbr_highlight = 'TabLine'
-"
+
 let g:neomru#file_mru_limit = 100
 
 let g:unite_source_file_mru_filename_format = ':~:.'
 let g:unite_source_file_mru_time_format = '(%A %e %b, %T) '
 
 let g:unite_enable_smart_case = 1
-let g:unite_prompt = '» '
 
-let g:unite_source_rec_max_cache_files = 5000
 let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
             \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
             \ '--ignore ".repl" --ignore "dist" --ignore "target" --ignore "bin" --ignore "build" ' .
@@ -791,7 +793,7 @@ nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
 
 " Quickly switch lcd
 nnoremap <silent> [unite]d
-            \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
+            \ :<C-u>Unite -buffer-name=change-cwd -default-action=cd directory directory_mru<CR>
 
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files
