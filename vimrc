@@ -193,6 +193,7 @@ set autoread
 
 " Display unprintable chars
 set list
+" set listchars=tab:⇥\ ,nbsp:·,trail:␣,extends:▸,precedes:◂
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,precedes:❮,extends:❯
 set showbreak=↪\ 
 "set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
