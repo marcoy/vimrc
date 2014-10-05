@@ -38,7 +38,6 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-fireplace'
@@ -57,7 +56,6 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'guns/vim-sexp'
 NeoBundle 'rking/ag.vim'
-" NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'amdt/vim-niji'
 NeoBundle 'Raimondi/delimitMate'
 " NeoBundle 'scrooloose/syntastic'
@@ -78,6 +76,10 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'wellle/targets.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tommcdo/vim-exchange'
+
+" Colourscheme
+NeoBundle 'tpope/vim-vividchalk'
+NeoBundle 'whatyouhide/vim-gotham'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -1065,13 +1067,17 @@ endfunction
 "===============================================================================
 " Colour Scheme
 "===============================================================================
-if !has('gui_running')
+colorscheme vividchalk
+
+if has('gui_running')
+    " let g:airline_theme="gotham"
+    " colorscheme gotham
+else
+    " colorscheme gotham256
+
     " Compatibility for Terminal
     let g:solarized_termtrans=1
 
     " Make Solarized use 256 colors for Terminal support
     let g:solarized_termcolors=256
 endif
-
-" colorscheme solarized
-colorscheme vividchalk
