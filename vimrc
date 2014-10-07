@@ -38,6 +38,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-fireplace'
@@ -339,10 +340,10 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
     set grepformat=%f:%l:%c:%m
 endif
-if executable('ack')
-    set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
-    set grepformat=%f:%l:%c:%m
-endif
+" if executable('ack')
+"     set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
+"     set grepformat=%f:%l:%c:%m
+" endif
 
 " Status line
 set laststatus=2
@@ -723,7 +724,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'google/obj/',
       \ ], '\|'))
 
-call unite#custom#source('file,file/new,buffer,file_rec,file_mru,line,outline,tab,bookmark,directory',
+call unite#custom#source('file,file/new,buffer,file_rec,file_mru,line,outline,tab,bookmark,directory,grep',
                        \ 'matchers', 'matcher_fuzzy')
 
 call unite#custom#profile('default', 'context', {
@@ -761,6 +762,7 @@ let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs
             \ '--ignore ".repl" --ignore "dist" --ignore "target" --ignore "bin" --ignore "build" ' .
             \ '--ignore ".gradle" --hidden -g ""'
 
+let g:unite_source_grep_max_candidates = 0
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--smart-case --follow --nogroup --nocolor --line-numbers --skip-vcs-ignores --hidden'
 let g:unite_source_grep_recursive_opt = ''
@@ -791,8 +793,10 @@ nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
 " Quick sources
 nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
 
-" Quick snippet
-nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
+nnoremap <silent> [unite]s
+        \ :<C-u>Unite -buffer-name=files -no-split
+        \ jump_point file_point buffer_tab
+        \ file_rec/async:! file_rec/git file file/new<CR>
 
 " Quickly switch lcd
 nnoremap <silent> [unite]d
@@ -801,7 +805,7 @@ nnoremap <silent> [unite]d
 " Quick file search
 nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files
             \ -toggle -auto-resize
-            \ file_rec/async file/new<CR>
+            \ file_rec/async:! file/new<CR>
 
 " Quick grep from cwd
 nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
@@ -847,9 +851,10 @@ function! s:unite_settings()
     imap <buffer> <c-j> <Plug>(unite_insert_leave)
     nmap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
     nmap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
+    nmap <buffer> <C-p> <Plug>(unite_toggle_auto_preview)
     imap <buffer> <c-a> <Plug>(unite_choose_action)
     imap <buffer> <TAB> <Plug>(unite_select_next_line)
-    imap <buffer> jj <Plug>(unite_insert_leave)
+    imap <buffer> jj    <Plug>(unite_insert_leave)
     imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
     imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
     imap <buffer> '     <Plug>(unite_quick_match_default_action)
@@ -862,6 +867,8 @@ function! s:unite_settings()
     nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
     inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
     nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    nnoremap <silent><buffer><expr> l
+            \ unite#smart_map('l', unite#do_action('default'))
 
     let unite = unite#get_current_unite()
     if unite.buffer_name =~# '^search'
@@ -871,6 +878,9 @@ function! s:unite_settings()
     endif
 
     nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+    nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
+            \ empty(unite#mappings#get_current_filters()) ?
+            \ ['sorter_reverse'] : [])
 
     " Using Ctrl-\ to trigger outline, so close it using the same keystroke
     if unite.buffer_name =~# '^outline'
