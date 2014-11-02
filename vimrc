@@ -79,6 +79,7 @@ NeoBundle 'tommcdo/vim-exchange'
 " Colourscheme
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'whatyouhide/vim-gotham'
+NeoBundle 'tomasr/molokai'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
