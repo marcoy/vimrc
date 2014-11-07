@@ -81,6 +81,12 @@ NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'whatyouhide/vim-gotham'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'nielsmadan/harlequin'
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'abra/vim-abra'
+NeoBundle 'w0ng/vim-hybrid'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
