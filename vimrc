@@ -76,6 +76,7 @@ NeoBundle 't9md/vim-choosewin'
 NeoBundle 'wellle/targets.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tommcdo/vim-exchange'
+NeoBundle 'rhysd/clever-f.vim'
 
 " Colourscheme
 NeoBundle 'tpope/vim-vividchalk'
