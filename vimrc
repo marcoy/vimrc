@@ -1084,17 +1084,14 @@ endfunction
 "===============================================================================
 " Colour Scheme
 "===============================================================================
-colorscheme vividchalk
+colorscheme molokai
 
 if has('gui_running')
     " let g:airline_theme="gotham"
     " colorscheme gotham
 else
     " colorscheme gotham256
-
-    " Compatibility for Terminal
-    let g:solarized_termtrans=1
-
-    " Make Solarized use 256 colors for Terminal support
-    let g:solarized_termcolors=256
 endif
+
+" highlight NonText guifg=fg guibg=bg ctermfg=fg ctermbg=bg gui=none cterm=none
+" highlight NonText ctermfg=12
