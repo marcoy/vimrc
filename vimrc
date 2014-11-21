@@ -88,6 +88,7 @@ NeoBundle 'morhetz/gruvbox'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'abra/vim-abra'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'gosukiwi/vim-atom-dark'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
