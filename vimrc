@@ -725,6 +725,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.pyc',
       \ '\.class',
       \ '\.repl',
+      \ '\.idea',
       \ 'target/',
       \ 'dist/',
       \ 'bin/',
@@ -769,7 +770,7 @@ let g:unite_enable_smart_case = 1
 let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
             \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
             \ '--ignore ".repl" --ignore "dist" --ignore "target" --ignore "bin" --ignore "build" ' .
-            \ '--ignore ".gradle" --hidden -g ""'
+            \ '--ignore ".gradle" --ignore ".idea" --hidden -g ""'
 
 let g:unite_source_grep_max_candidates = 0
 let g:unite_source_grep_command = 'ag'
