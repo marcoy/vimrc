@@ -1026,7 +1026,7 @@ let g:haskell_conceal_enumerations = 0
 "===============================================================================
 " delimitMate
 "===============================================================================
-au FileType haskell,clojure,java let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType haskell,clojure,java,cabal let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 
 "===============================================================================
