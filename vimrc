@@ -608,10 +608,10 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType clojure setlocal omnifunc=vimclojure#OmniCompletion
 
 autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
-autocmd FileType xml setlocal sts=2 sw=2 ts=2 et
+autocmd FileType xml setlocal sts=4 sw=4 ts=4 et
 autocmd FileType ant setlocal sts=2 sw=2 ts=2 et
-autocmd FileType html setlocal sts=2 sw=2 ts=2 et
-autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
+autocmd FileType html setlocal sts=4 sw=4 ts=4 et
+autocmd FileType javascript setlocal sts=4 sw=4 ts=4 et
 autocmd FileType json setlocal syntax=javascript
 
 " When editing a file, always jump to the last known cursor position.
@@ -730,6 +730,8 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'dist/',
       \ 'bin/',
       \ 'build/',
+      \ 'node_modules/',
+      \ 'node/',
       \ 'git5/.*/review/',
       \ 'google/obj/',
       \ ], '\|'))
@@ -770,7 +772,7 @@ let g:unite_enable_smart_case = 1
 let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
             \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
             \ '--ignore ".repl" --ignore "dist" --ignore "target" --ignore "bin" --ignore "build" ' .
-            \ '--ignore ".gradle" --ignore ".idea" --hidden -g ""'
+            \ '--ignore ".gradle" --ignore ".idea" --ignore "node_modules" --ignore "node" --hidden -g ""'
 
 let g:unite_source_grep_max_candidates = 0
 let g:unite_source_grep_command = 'ag'
