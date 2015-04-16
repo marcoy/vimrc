@@ -1,0 +1,13 @@
+snippet ex "Executable"
+executable ${1:`!v vim2hs#cabal#name()`}
+        hs-source-dirs     : src
+        main-is            : ${2:$1.hs}
+        -- other-modules      :
+        -- default-extensions :
+        default-language   : Haskell2010
+        ghc-options        : -Wall
+                             -threaded -rtsopts -with-rtsopts=-N
+        build-depends      : base == 4.*
+                           , `!v vim2hs#cabal#name()`
+                           $0
+endsnippet
