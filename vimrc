@@ -59,7 +59,7 @@ NeoBundle 'guns/vim-sexp'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'amdt/vim-niji'
 NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
@@ -78,6 +78,7 @@ NeoBundle 'wellle/targets.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'rizzatti/dash.vim'
 
 " Colourscheme
 NeoBundle 'tpope/vim-vividchalk'
@@ -93,9 +94,9 @@ NeoBundle 'gosukiwi/vim-atom-dark'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/neco-ghc', { 'external_commands' : 'ghc-mod' }
-NeoBundle 'eagletmt/ghcmod-vim', { 'external_commands' : 'ghc-mod' }
-NeoBundle 'bitc/vim-hdevtools', { 'external_commands': 'hdevtools' }
+NeoBundle 'eagletmt/neco-ghc',   { 'external_commands': 'ghc-mod' }
+NeoBundle 'eagletmt/ghcmod-vim', { 'external_commands': 'ghc-mod' }
+NeoBundle 'bitc/vim-hdevtools',  { 'external_commands': 'hdevtools' }
 
 call neobundle#end()
 
@@ -437,6 +438,19 @@ autocmd FileType java nnoremap <Leader>ji :JavaImport<CR>
 autocmd FileType java nnoremap <Leader>jio :JavaImportOrganize<CR>
 autocmd FileType java nnoremap <Leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
 autocmd FileType java nnoremap <Leader>ju :JUnit<CR>
+
+" Haskell
+autocmd FileType haskell nnoremap <silent> <Leader>ht  :GhcModType<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>htc :GhcModTypeClear<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hi  :GhcModTypeInsert!<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hc  :GhcModCheckAsync<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hl  :GhcModLintAsync<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hcl :GhcModCheckAndLintAsync<CR>
+
+" Syntastic
+nnoremap <silent> <Leader>sc :SyntasticCheck<CR>
+nnoremap <silent> <Leader>sr :SyntasticReset<CR>
+nnoremap <silent> <Leader>st :SyntasticToggleMode<CR>
 
 
 "===============================================================================
@@ -916,10 +930,19 @@ let NERDSpaceDelims=1
 "===============================================================================
 " Syntastic
 "===============================================================================
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+highlight SyntasticErrorSign guifg=white guibg=red
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
 
 
 "===============================================================================
