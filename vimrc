@@ -57,7 +57,7 @@ NeoBundle 'guns/vim-clojure-highlight'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'guns/vim-sexp'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'amdt/vim-niji'
+NeoBundle 'losingkeys/vim-niji'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
@@ -79,6 +79,8 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-notes'
 
 " Colourscheme
 NeoBundle 'tpope/vim-vividchalk'
@@ -600,7 +602,7 @@ let b:match_debug = 1
 " Font
 "===============================================================================
 if s:is_macvim
-    set guifont=Inconsolata:h14
+    set guifont=Inconsolata:h13
     set transparency=2
 else
     set guifont=Inconsolata\ 13
@@ -741,6 +743,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.repl',
       \ '\.idea',
       \ '\.stack-work',
+      \ '\.metadata',
       \ 'target/',
       \ 'dist/',
       \ 'bin/',
@@ -787,7 +790,7 @@ let g:unite_enable_smart_case = 1
 let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
             \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
             \ '--ignore ".repl" --ignore "dist" --ignore "target" --ignore "bin" --ignore "build" ' .
-            \ '--ignore ".stack-work" ' .
+            \ '--ignore ".stack-work" --ignore ".metadata" ' .
             \ '--ignore ".gradle" --ignore ".idea" --ignore "node_modules" --ignore "node" --hidden -g ""'
 
 let g:unite_source_grep_max_candidates = 0
@@ -999,6 +1002,11 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_marked_file_icon = '*'
 
+
+"===============================================================================
+" vim-notes
+"===============================================================================
+let g:notes_directories = ['~/Documents/Notes', '~/Google Drive/Shared Notes']
 
 
 "===============================================================================
