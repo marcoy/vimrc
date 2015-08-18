@@ -602,7 +602,7 @@ let b:match_debug = 1
 " Font
 "===============================================================================
 if s:is_macvim
-    set guifont=Inconsolata:h13
+    set guifont=Literation\ Mono\ Powerline:h12
     set transparency=2
 else
     set guifont=Inconsolata\ 13
