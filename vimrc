@@ -81,6 +81,7 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-notes'
+NeoBundle 'robbles/logstash.vim'
 
 " Colourscheme
 NeoBundle 'tpope/vim-vividchalk'
@@ -405,8 +406,8 @@ let g:mapleader = ","
 let maplocalleader = ","
 let g:maplocalleader = ","
 
-" <Leader>1: Toggle between paste mode
-nnoremap <silent> <Leader>1 :set paste!<cr>
+" <Leader>p: Toggle between paste mode
+nnoremap <silent> <Leader>p :set paste!<cr>
 
 " <Leader>s: Spell checking shortcuts
 nnoremap <Leader>ss :setlocal spell!<cr>
@@ -491,6 +492,16 @@ nnoremap <C-L> :nohls<CR><C-L>
 " Use \v (magic) by default
 nnoremap / /\v
 vnoremap / /\v
+
+nnoremap <D-1> 1gt
+nnoremap <D-2> 2gt
+nnoremap <D-3> 3gt
+nnoremap <D-4> 4gt
+nnoremap <D-5> 5gt
+nnoremap <D-6> 6gt
+nnoremap <D-7> 7gt
+nnoremap <D-8> 8gt
+nnoremap <D-9> 9gt
 
 
 "===============================================================================
@@ -961,11 +972,19 @@ let g:SuperTabCrMapping = 0
 "===============================================================================
 " Airline
 "===============================================================================
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#enabled          = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#tab_min_count    = 2
+let g:airline#extensions#tabline#tab_nr_type      = 1
+let g:airline#extensions#tabline#buffer_idx_mode  = 1
+let g:airline#extensions#tabline#buffer_nr_show   = 0
+let g:airline#extensions#tabline#show_tab_type    = 1
+let g:airline#extensions#tabline#show_buffers     = 1
+let g:airline#extensions#tabline#fnamemod         = ':t'
 let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#whitespace#enabled       = 0
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 if s:is_macvim
@@ -1121,6 +1140,11 @@ function! DeleteEmptyBuffers()
         exe 'bdelete' join(empty)
     endif
 endfunction
+
+" Switch to last active tab
+let g:lasttab = 1
+nmap <Leader>l :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
 
 
 "===============================================================================
