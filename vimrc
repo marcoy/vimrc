@@ -99,6 +99,9 @@ NeoBundle 'eagletmt/neco-ghc',   { 'external_commands': 'ghc-mod' }
 NeoBundle 'eagletmt/ghcmod-vim', { 'external_commands': 'ghc-mod' }
 NeoBundle 'bitc/vim-hdevtools',  { 'external_commands': 'hdevtools' }
 
+" Idris
+NeoBundle 'idris-hackers/idris-vim'
+
 call neobundle#end()
 
 " Enable file type detection.
