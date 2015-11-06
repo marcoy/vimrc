@@ -1,6 +1,8 @@
 " Inspired by https://github.com/terryma/dotfiles/blob/master/.vimrc
 "             https://github.com/bling/dotvim/blob/master/vimrc
 
+scriptencoding utf-8
+
 " Disable vi-compatibility
 set nocompatible
 
@@ -211,7 +213,8 @@ set autoread
 " Display unprintable chars
 set list
 " set listchars=tab:⇥\ ,nbsp:·,trail:␣,extends:▸,precedes:◂
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,precedes:❮,extends:❯
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅,precedes:«,extends:»
+" ,extends:\❯,precedes:\❮
 set showbreak=↪\ 
 "set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 "set showbreak=↪
