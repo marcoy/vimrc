@@ -80,7 +80,6 @@ NeoBundle 'tommcdo/vim-exchange'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-notes'
 NeoBundle 'robbles/logstash.vim'
 
 " Colourscheme
@@ -1028,12 +1027,6 @@ let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_marked_file_icon = '*'
-
-
-"===============================================================================
-" vim-notes
-"===============================================================================
-let g:notes_directories = ['~/Documents/Notes', '~/Google Drive/Shared Notes']
 
 
 "===============================================================================
