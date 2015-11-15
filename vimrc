@@ -38,7 +38,6 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
@@ -48,10 +47,8 @@ NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-jdaddy'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Lokaltog/vim-easymotion'
-" NeoBundle 'ervandew/supertab'
 " NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'SirVer/ultisnips'
@@ -93,6 +90,7 @@ NeoBundle 'sickill/vim-monokai'
 NeoBundle 'abra/vim-abra'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'gosukiwi/vim-atom-dark'
+NeoBundle 'altercation/vim-colors-solarized'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -965,14 +963,6 @@ let g:syntastic_mode_map = {
 
 
 "===============================================================================
-" Supertab
-"===============================================================================
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<C-n>"
-let g:SuperTabCrMapping = 0
-
-
-"===============================================================================
 " Airline
 "===============================================================================
 let g:airline#extensions#tabline#enabled          = 1
@@ -1051,18 +1041,6 @@ let g:ag_mapping_message=0
 
 
 "===============================================================================
-" Eclim
-"===============================================================================
-let g:EclimCompletionMethod = 'omnifunc'
-let g:EclimJavaSearchSingleResult = 'tabnew'
-let g:EclimLocateFileFuzzy = 1
-let g:EclimTempFilesEnable = 0
-command -range -nargs=* Google call eclim#web#SearchEngine(
-  \ 'http://www.google.com/search?q=<query>', <q-args>, <line1>, <line2>)
-autocmd FileType java nnoremap <silent><buffer><CR> :JavaSearchContext<CR>
-
-
-"===============================================================================
 " Haskell
 "===============================================================================
 if neobundle#is_sourced('neco-ghc')
@@ -1078,44 +1056,6 @@ let g:haskell_conceal_enumerations = 0
 " delimitMate
 "===============================================================================
 au FileType haskell,clojure,java,cabal let b:delimitMate_matchpairs = "(:),[:],{:}"
-
-
-"===============================================================================
-" Vimshell
-"===============================================================================
-" let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-" "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-
-if has('win32') || has('win64')
-    " Display user name on Windows.
-    let g:vimshell_prompt = $USERNAME."% "
-else
-    " Display user name on Linux.
-    let g:vimshell_prompt = $USER."% "
-endif
-
-" Initialize execute file list.
-let g:vimshell_execute_file_list = {}
-call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
-let g:vimshell_execute_file_list['rb'] = 'ruby'
-let g:vimshell_execute_file_list['pl'] = 'perl'
-let g:vimshell_execute_file_list['py'] = 'python'
-call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
-
-autocmd FileType vimshell
-\ call vimshell#altercmd#define('g', 'git')
-\| call vimshell#altercmd#define('i', 'iexe')
-\| call vimshell#altercmd#define('l', 'll')
-\| call vimshell#altercmd#define('ll', 'ls -l')
-\| call vimshell#hook#add('chpwd', 'my_chpwd', 'MyChpwd')
-
-function! MyChpwd(args, context)
-    call vimshell#execute('ls')
-endfunction
-
-autocmd FileType int-* call s:interactive_settings()
-function! s:interactive_settings()
-endfunction
 
 
 "===============================================================================
