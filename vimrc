@@ -619,7 +619,7 @@ if s:is_macvim
     set guifont=Literation\ Mono\ Powerline:h12
     set transparency=2
 else
-    set guifont=Inconsolata\ 13
+    set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
 endif
 
 
@@ -1147,7 +1147,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 "===============================================================================
 " Colour Scheme
 "===============================================================================
-colorscheme molokai
+colorscheme gruvbox
 
 if has('gui_running')
     " let g:airline_theme="gotham"
