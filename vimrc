@@ -990,18 +990,14 @@ let g:airline#extensions#whitespace#enabled       = 0
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
-if s:is_macvim
-    let g:airline_powerline_fonts=1
-else
-    let g:airline_powerline_fonts=0
-    let g:airline_symbols = {}
-    let g:airline_left_sep = '▶'
-    let g:airline_right_sep = '◀'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.linenr = '␊'
-    let g:airline_symbols.whitespace = 'Ξ'
-    let g:airline_symbols.paste = 'ρ'
-endif
+let g:airline_powerline_fonts=1
+" let g:airline_symbols = {}
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.paste = 'ρ'
 
 
 "===============================================================================
