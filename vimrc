@@ -93,10 +93,13 @@ NeoBundle 'gosukiwi/vim-atom-dark'
 NeoBundle 'altercation/vim-colors-solarized'
 
 " Haskell
-NeoBundle 'dag/vim2hs'
+" NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/neco-ghc',   { 'external_commands': 'ghc-mod' }
 NeoBundle 'eagletmt/ghcmod-vim', { 'external_commands': 'ghc-mod' }
 NeoBundle 'bitc/vim-hdevtools',  { 'external_commands': 'hdevtools' }
+NeoBundle 'Twinside/vim-hoogle'
+NeoBundle 'neovimhaskell/haskell-vim'
+NeoBundle 'enomsg/vim-haskellConcealPlus'
 
 " Idris
 NeoBundle 'idris-hackers/idris-vim'
@@ -361,25 +364,25 @@ endif
 
 " Status line
 set laststatus=2
-set statusline=%f
-set statusline+=%m      "modified flag
-set statusline+=\ %y      "filetype
-set statusline+=%h      "help file flag
-set statusline+=%r      "read only flag
-set statusline+=%{fugitive#statusline()}
-"display a warning if paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-"display a warning if fileformat isnt unix
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
-set statusline+=%=      "left/right separator
-set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+" set statusline=%f
+" set statusline+=%m      "modified flag
+" set statusline+=\ %y      "filetype
+" set statusline+=%h      "help file flag
+" set statusline+=%r      "read only flag
+" set statusline+=%{fugitive#statusline()}
+" "display a warning if paste is set
+" set statusline+=%#error#
+" set statusline+=%{&paste?'[paste]':''}
+" set statusline+=%*
+" "display a warning if fileformat isnt unix
+" set statusline+=%#warningmsg#
+" set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+" set statusline+=%*
+" set statusline+=%=      "left/right separator
+" set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
+" set statusline+=%c,     "cursor column
+" set statusline+=%l/%L   "cursor line/total lines
+" set statusline+=\ %P    "percent through file
 
 " Enable meta key
 if s:is_macvim
@@ -442,14 +445,6 @@ autocmd FileType java nnoremap <Leader>ji :JavaImport<CR>
 autocmd FileType java nnoremap <Leader>jio :JavaImportOrganize<CR>
 autocmd FileType java nnoremap <Leader>jr :JavaSearch -p <C-R><C-W> -x references<CR>
 autocmd FileType java nnoremap <Leader>ju :JUnit<CR>
-
-" Haskell
-autocmd FileType haskell nnoremap <silent> <Leader>ht  :GhcModType<CR>
-autocmd FileType haskell nnoremap <silent> <Leader>htc :GhcModTypeClear<CR>
-autocmd FileType haskell nnoremap <silent> <Leader>hi  :GhcModTypeInsert!<CR>
-autocmd FileType haskell nnoremap <silent> <Leader>hc  :GhcModCheckAsync<CR>
-autocmd FileType haskell nnoremap <silent> <Leader>hl  :GhcModLintAsync<CR>
-autocmd FileType haskell nnoremap <silent> <Leader>hcl :GhcModCheckAndLintAsync<CR>
 
 " Syntastic
 nnoremap <silent> <Leader>sc :SyntasticCheck<CR>
@@ -716,7 +711,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
 endif
 
-let g:neocomplete#force_omni_input_patterns.java = '\%(\h\w*\|)\)\.\w*'
+" let g:neocomplete#force_omni_input_patterns.java = '\%(\h\w*\|)\)\.\w*'
 
 " For smart TAB completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
@@ -1041,18 +1036,6 @@ let g:ag_mapping_message=0
 
 
 "===============================================================================
-" Haskell
-"===============================================================================
-if neobundle#is_sourced('neco-ghc')
-    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-    let g:necoghc_enable_detailed_browse = 1
-endif
-autocmd FileType haskell compiler cabal
-let g:haskell_conceal = 0
-let g:haskell_conceal_enumerations = 0
-
-
-"===============================================================================
 " delimitMate
 "===============================================================================
 au FileType haskell,clojure,java,cabal let b:delimitMate_matchpairs = "(:),[:],{:}"
@@ -1078,6 +1061,38 @@ endfunction
 let g:lasttab = 1
 nmap <Leader>l :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
+
+
+"===============================================================================
+" Haskell
+"===============================================================================
+if neobundle#is_sourced('neco-ghc')
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+    let g:necoghc_enable_detailed_browse = 1
+endif
+set tags=tags;/,codex.tags;/
+
+" Turn off haskell conceal plus
+" let g:no_haskell_conceal = 1
+let g:hscoptions="hB𝐒𝐄𝐌"
+
+" Enable highlighting of forall
+let g:haskell_enable_quantification = 1
+" Enable highlighting of proc
+let g:haskell_enable_arrowsyntax = 1
+" Enable highlighting of type roles
+let g:haskell_enable_typeroles = 1
+" Enable highlighting of pattern
+let g:haskell_enable_pattern_synonyms = 1
+
+autocmd FileType haskell nnoremap <silent> <Leader>ht  :GhcModType<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>htc :GhcModTypeClear<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hi  :GhcModTypeInsert!<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hc  :GhcModCheckAsync<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hl  :GhcModLintAsync<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hcl :GhcModCheckAndLintAsync<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>cu  :!codex update<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>cuf :!codex update --force<CR>
 
 
 "===============================================================================
