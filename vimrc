@@ -1040,7 +1040,7 @@ let g:ag_mapping_message=0
 "===============================================================================
 " delimitMate
 "===============================================================================
-au FileType haskell,clojure,java,cabal let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType haskell,clojure,java,cabal,python let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 
 "===============================================================================
@@ -1076,7 +1076,7 @@ set tags=tags;/,codex.tags;/
 
 " Turn off haskell conceal plus
 " let g:no_haskell_conceal = 1
-let g:hscoptions="hB𝐒𝐄𝐌"
+let g:hscoptions="rhB𝐒𝐄𝐌"
 
 " Enable highlighting of forall
 let g:haskell_enable_quantification = 1
