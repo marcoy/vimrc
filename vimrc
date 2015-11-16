@@ -60,6 +60,7 @@ NeoBundle 'losingkeys/vim-niji'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'eiiches/unite-tselect'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'justinmk/vim-sneak'
@@ -280,10 +281,11 @@ set smarttab
 set copyindent
 set smartindent
 set linebreak
-set textwidth=80
+set textwidth=120
 set autoindent
 set nowrap
 set whichwrap+=h,l,<,>,[,]
+set formatoptions+=t
 
 " A fast terminal connection
 set ttyfast
@@ -1103,6 +1105,39 @@ autocmd FileType haskell nnoremap <silent> <Leader>cuf :!codex update --force<CR
 if executable('stylish-haskell')
     autocmd FileType haskell let &formatprg="stylish-haskell"
 endif
+
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
+
 
 "===============================================================================
 " Colour Scheme
