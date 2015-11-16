@@ -256,6 +256,8 @@ set magic
 
 " Show matching brackets
 set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
 
 " Set encoding to utf-8
 set enc=utf-8
@@ -1076,6 +1078,8 @@ set tags=tags;/,codex.tags;/
 
 " Turn off haskell conceal plus
 " let g:no_haskell_conceal = 1
+let g:haskell_conceal_wide = 1
+let g:haskell_conceal_enumerations = 1
 let g:hscoptions="rhB𝐒𝐄𝐌"
 
 " Enable highlighting of forall
