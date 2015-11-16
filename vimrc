@@ -1096,6 +1096,9 @@ autocmd FileType haskell nnoremap <silent> <Leader>hcl :GhcModCheckAndLintAsync<
 autocmd FileType haskell nnoremap <silent> <Leader>cu  :!codex update<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>cuf :!codex update --force<CR>
 
+if executable('stylish-haskell')
+    autocmd FileType haskell let &formatprg="stylish-haskell"
+endif
 
 "===============================================================================
 " Colour Scheme
