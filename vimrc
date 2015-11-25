@@ -94,6 +94,8 @@ NeoBundle 'abra/vim-abra'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'gosukiwi/vim-atom-dark'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'zenorocha/dracula-theme'
+NeoBundle 'NLKNguyen/papercolor-theme'
 
 " Haskell
 " NeoBundle 'dag/vim2hs'
