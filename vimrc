@@ -1038,8 +1038,8 @@ let g:UltiSnipsExpandTrigger="<C-CR>"
 "===============================================================================
 " Ag
 "===============================================================================
-let g:agprg="ag --column --smart-case --follow"
-let g:aghighlight=1
+let g:ag_prg="ag --vimgrep --column --smart-case --follow"
+let g:ag_highlight=1
 let g:ag_mapping_message=0
 
 
@@ -1103,6 +1103,9 @@ autocmd FileType haskell nnoremap <silent> <Leader>hl  :GhcModLintAsync<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>hcl :GhcModCheckAndLintAsync<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>cu  :!codex update<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>cuf :!codex update --force<CR>
+autocmd FileType haskell nnoremap <silent> <leader><CR> :noh<CR>:GhcModTypeClear<CR>:SyntasticReset<CR>
+autocmd FileType haskell nnoremap <silent> <leader>hhc :SyntasticCheck hdevtools<CR>
+
 
 if executable('stylish-haskell')
     autocmd FileType haskell let &formatprg="stylish-haskell"
