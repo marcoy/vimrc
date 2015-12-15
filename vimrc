@@ -96,6 +96,7 @@ NeoBundle 'gosukiwi/vim-atom-dark'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'zenorocha/dracula-theme'
 NeoBundle 'NLKNguyen/papercolor-theme'
+" NeoBundle 'flazz/vim-colorschemes'
 
 " Haskell
 " NeoBundle 'dag/vim2hs'
@@ -365,10 +366,6 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
     set grepformat=%f:%l:%c:%m
 endif
-" if executable('ack')
-"     set grepprg=ack\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
-"     set grepformat=%f:%l:%c:%m
-" endif
 
 " Status line
 set laststatus=2
@@ -802,11 +799,10 @@ let g:unite_source_file_mru_time_format = '(%A %e %b, %T) '
 
 let g:unite_enable_smart_case = 1
 
-let g:unite_source_rec_async_command='ag --nocolor --follow --nogroup --skip-vcs-ignores ' .
-            \ '--ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --ignore ".cabal-sandbox" ' .
-            \ '--ignore ".repl" --ignore "dist" --ignore "target" --ignore "bin" --ignore "build" ' .
-            \ '--ignore ".stack-work" --ignore ".metadata" ' .
-            \ '--ignore ".gradle" --ignore ".idea" --ignore "node_modules" --ignore "node" --hidden -g ""'
+let g:unite_source_rec_async_command =
+            \ ['ag', '--follow', '--nocolor', '-S', '--nogroup', '--hidden', '-g', '',
+            \  '--ignore', ".git", '--ignore', '.svn', '--ignore', '.stack-work',
+            \  '--ignore', ".idea", '--ignore', '.gradle']
 
 let g:unite_source_grep_max_candidates = 0
 let g:unite_source_grep_command = 'ag'
