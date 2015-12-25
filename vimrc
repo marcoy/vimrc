@@ -614,7 +614,7 @@ let b:match_debug = 1
 " Font
 "===============================================================================
 if s:is_macvim
-    set guifont=Literation\ Mono\ Powerline:h12
+    set guifont=Droid\ Sans\ Mono\ Slashed\ for\ Powerline:h11
     set transparency=2
 else
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
@@ -1077,7 +1077,7 @@ endif
 set tags=tags;/,codex.tags;/
 
 " Turn off haskell conceal plus
-" let g:no_haskell_conceal = 1
+let g:no_haskell_conceal = 1
 let g:haskell_conceal_wide = 1
 let g:haskell_conceal_enumerations = 1
 let g:hscoptions="rhB𝐒𝐄𝐌"
@@ -1094,6 +1094,7 @@ let g:haskell_enable_pattern_synonyms = 1
 autocmd FileType haskell nnoremap <silent> <Leader>ht  :GhcModType<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>htc :GhcModTypeClear<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>hi  :GhcModTypeInsert!<CR>
+autocmd FileType haskell nnoremap <silent> <Leader>hip :GhcModInfoPreview<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>hc  :GhcModCheckAsync<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>hl  :GhcModLintAsync<CR>
 autocmd FileType haskell nnoremap <silent> <Leader>hcl :GhcModCheckAndLintAsync<CR>
