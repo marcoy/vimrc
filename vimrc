@@ -614,7 +614,8 @@ let b:match_debug = 1
 " Font
 "===============================================================================
 if s:is_macvim
-    set guifont=Droid\ Sans\ Mono\ Slashed\ for\ Powerline:h11
+    " set guifont=Droid\ Sans\ Mono\ Slashed\ for\ Powerline:h11
+    set guifont=Hasklig\ Light:h11
     set transparency=2
 else
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
