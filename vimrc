@@ -62,7 +62,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'eiiches/unite-tselect'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'atweiden/vim-dragvisuals'
 NeoBundle 'elixir-lang/vim-elixir'
@@ -988,7 +989,7 @@ let g:airline_powerline_fonts=1
 " let g:airline_symbols.linenr = '␊'
 " let g:airline_symbols.whitespace = 'Ξ'
 " let g:airline_symbols.paste = 'ρ'
-
+let g:airline_theme='dark'
 
 "===============================================================================
 " vim-sneak
@@ -1148,7 +1149,6 @@ let g:tagbar_type_haskell = {
 colorscheme gruvbox
 
 if has('gui_running')
-    " let g:airline_theme="gotham"
     " colorscheme gotham
 else
     " colorscheme gotham256
