@@ -1,3 +1,4 @@
 bundle/*
 eclim
 plugin
+/plugged

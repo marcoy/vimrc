@@ -6,117 +6,89 @@ scriptencoding utf-8
 " Disable vi-compatibility
 set nocompatible
 
+call plug#begin('~/.vim/plugged')
 
-"===============================================================================
-" NeoBundle
-"===============================================================================
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Use https protocol over proxy.
-let g:neobundle#types#git#default_protocol = 'https'
-let g:neobundle#install_max_processes = 20
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/tabpagebuffer.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-jdaddy'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'int3/vim-extradite'
-NeoBundle 'kshenoy/vim-signature'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'guns/vim-clojure-highlight'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'guns/vim-sexp'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'losingkeys/vim-niji'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'eiiches/unite-tselect'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'atweiden/vim-dragvisuals'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'michaeljsmith/vim-indent-object'
-NeoBundle 'hewes/unite-gtags',{ 'external_commands' : 'gtags' }
-NeoBundle 'vim-scripts/gtags.vim',{ 'external_commands' : 'gtags' }
-NeoBundle 't9md/vim-choosewin'
-NeoBundle 'wellle/targets.vim'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tommcdo/vim-exchange'
-NeoBundle 'rhysd/clever-f.vim'
-NeoBundle 'rizzatti/dash.vim'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'robbles/logstash.vim'
-NeoBundle 'moll/vim-bbye'
-NeoBundle 'godlygeek/tabular'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/tabpagebuffer.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-commentary'
+Plug 'int3/vim-extradite'
+Plug 'kshenoy/vim-signature'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'majutsushi/tagbar'
+Plug 'SirVer/ultisnips'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'rking/ag.vim'
+Plug 'losingkeys/vim-niji'
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/syntastic'
+Plug 'tsukkee/unite-tag'
+Plug 'eiiches/unite-tselect'
+Plug 'mattn/emmet-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'justinmk/vim-sneak'
+Plug 'atweiden/vim-dragvisuals'
+Plug 'elixir-lang/vim-elixir'
+Plug 'honza/vim-snippets'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 't9md/vim-choosewin'
+Plug 'wellle/targets.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'tommcdo/vim-exchange'
+Plug 'rhysd/clever-f.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'xolox/vim-misc'
+Plug 'robbles/logstash.vim'
+Plug 'moll/vim-bbye'
+Plug 'godlygeek/tabular'
 
 " Colourscheme
-NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'whatyouhide/vim-gotham'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'sjl/badwolf'
-NeoBundle 'nielsmadan/harlequin'
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'sickill/vim-monokai'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'gosukiwi/vim-atom-dark'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'zenorocha/dracula-theme'
-NeoBundle 'NLKNguyen/papercolor-theme'
-" NeoBundle 'flazz/vim-colorschemes'
+" Plug 'tpope/vim-vividchalk'
+" Plug 'whatyouhide/vim-gotham'
+" Plug 'tomasr/molokai'
+" Plug 'sjl/badwolf'
+" Plug 'nielsmadan/harlequin'
+" Plug 'morhetz/gruvbox'
+" Plug 'sickill/vim-monokai'
+" Plug 'w0ng/vim-hybrid'
+" Plug 'gosukiwi/vim-atom-dark'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'zenorocha/dracula-theme'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'flazz/vim-colorschemes'
 
 " Haskell
-" NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/neco-ghc',   { 'external_commands': 'ghc-mod' }
-NeoBundle 'eagletmt/ghcmod-vim', { 'external_commands': 'ghc-mod' }
-NeoBundle 'bitc/vim-hdevtools',  { 'external_commands': 'hdevtools' }
-NeoBundle 'Twinside/vim-hoogle'
-NeoBundle 'neovimhaskell/haskell-vim'
-NeoBundle 'enomsg/vim-haskellConcealPlus'
+" Plug 'dag/vim2hs'
+Plug 'eagletmt/neco-ghc'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'bitc/vim-hdevtools'
+Plug 'Twinside/vim-hoogle'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'enomsg/vim-haskellConcealPlus'
 
 " Idris
-NeoBundle 'idris-hackers/idris-vim'
+Plug 'idris-hackers/idris-vim'
 
-call neobundle#end()
+call plug#end()
 
 " Enable file type detection.
 filetype plugin indent on
 syntax enable
-
-NeoBundleCheck
 
 
 "===============================================================================
@@ -1071,10 +1043,8 @@ au TabLeave * let g:lasttab = tabpagenr()
 "===============================================================================
 " Haskell
 "===============================================================================
-if neobundle#is_sourced('neco-ghc')
-    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-    let g:necoghc_enable_detailed_browse = 1
-endif
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
 set tags=tags;/,codex.tags;/
 
 " Turn off haskell conceal plus
@@ -1145,7 +1115,7 @@ let g:tagbar_type_haskell = {
 "===============================================================================
 " Colour Scheme
 "===============================================================================
-colorscheme gruvbox
+colorscheme PaperColor
 
 if has('gui_running')
     " colorscheme gotham
