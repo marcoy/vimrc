@@ -335,7 +335,7 @@ else
 endif
 
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+    set grepprg=ag\ --vimgrep\ --hidden\ --smart-case\ --nocolor\ --follow
     set grepformat=%f:%l:%c:%m
 endif
 
@@ -376,6 +376,9 @@ function! StatuslineCurrentHighlight()
     endif
 endfunction
 
+" Persist undo actions
+set undofile
+set undodir=~/.vim/undodir
 
 "===============================================================================
 " Leader Mappings
