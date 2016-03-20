@@ -380,6 +380,9 @@ endfunction
 set undofile
 set undodir=~/.vim/undodir
 
+" Enable font ligatures.
+set macligatures
+
 "===============================================================================
 " Leader Mappings
 "===============================================================================
