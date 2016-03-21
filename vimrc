@@ -97,6 +97,7 @@ syntax enable
 let s:is_windows = has('win32') || has('win64')
 let s:is_cygwin = has('win32unix')
 let s:is_macvim = has('gui_macvim')
+let g:powerline_pycmd = "py3"
 
 
 "===============================================================================
@@ -361,9 +362,12 @@ set laststatus=2
 " set statusline+=%l/%L   "cursor line/total lines
 " set statusline+=\ %P    "percent through file
 
-" Enable meta key
 if s:is_macvim
+    " Enable meta key
     set macmeta
+
+    " Enable font ligatures.
+    set macligatures
 endif
 
 "return the syntax highlight group under the cursor ''
@@ -379,9 +383,6 @@ endfunction
 " Persist undo actions
 set undofile
 set undodir=~/.vim/undodir
-
-" Enable font ligatures.
-set macligatures
 
 "===============================================================================
 " Leader Mappings
@@ -596,7 +597,7 @@ if s:is_macvim
     set guifont=Iosevka\ Light:h11
     set transparency=2
 else
-    set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
+    set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
 endif
 
 
