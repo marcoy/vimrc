@@ -72,6 +72,9 @@ Plug 'zenorocha/dracula-theme'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'flazz/vim-colorschemes'
 
+" Scala
+Plug 'derekwyatt/vim-scala'
+
 " Haskell
 " Plug 'dag/vim2hs'
 Plug 'eagletmt/neco-ghc'
