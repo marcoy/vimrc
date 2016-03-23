@@ -1025,7 +1025,7 @@ let g:ag_mapping_message=0
 "===============================================================================
 " delimitMate
 "===============================================================================
-au FileType haskell,clojure,java,cabal,python let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType haskell,clojure,java,cabal,python,scala let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 
 "===============================================================================
