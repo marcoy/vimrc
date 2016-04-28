@@ -74,6 +74,7 @@ Plug 'flazz/vim-colorschemes'
 
 " Scala
 Plug 'derekwyatt/vim-scala'
+Plug 'ensime/ensime-vim', { 'for': 'scala' }
 
 " Haskell
 " Plug 'dag/vim2hs'
@@ -1121,6 +1122,13 @@ let g:tagbar_type_haskell = {
     \ }
 \ }
 
+
+"===============================================================================
+" Scala
+"===============================================================================
+autocmd FileType scala nnoremap <silent> <leader>t :EnType<CR>
+autocmd FileType scala nnoremap <silent> <leader>g :EnDeclaration<CR>
+autocmd FileType scala nnoremap <silent> <leader>b :EnDocBrowse<CR>
 
 "===============================================================================
 " Colour Scheme
