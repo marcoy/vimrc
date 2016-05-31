@@ -261,7 +261,7 @@ set smarttab
 set copyindent
 set smartindent
 set linebreak
-set textwidth=120
+set textwidth=100
 set autoindent
 set nowrap
 set whichwrap+=h,l,<,>,[,]
