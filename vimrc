@@ -88,6 +88,9 @@ Plug 'enomsg/vim-haskellConcealPlus'
 " Idris
 Plug 'idris-hackers/idris-vim'
 
+" Elm
+Plug 'lambdatoast/elm.vim'
+
 call plug#end()
 
 " Enable file type detection.
