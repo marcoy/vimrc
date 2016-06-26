@@ -17,7 +17,6 @@ Plug 'Shougo/neomru.vim'
 Plug 'Shougo/tabpagebuffer.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
@@ -28,9 +27,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'rking/ag.vim'
 Plug 'losingkeys/vim-niji'
 Plug 'Raimondi/delimitMate'
@@ -72,6 +68,12 @@ Plug 'zenorocha/dracula-theme'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'flazz/vim-colorschemes'
 
+" Clojure
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'guns/vim-sexp', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
 " Scala
 Plug 'derekwyatt/vim-scala'
 Plug 'ensime/ensime-vim', { 'for': 'scala' }
@@ -85,11 +87,15 @@ Plug 'Twinside/vim-hoogle'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'enomsg/vim-haskellConcealPlus'
 
+" PureScript
+Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
+Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
+
 " Idris
 Plug 'idris-hackers/idris-vim'
 
 " Elm
-Plug 'lambdatoast/elm.vim'
+Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
 
 call plug#end()
 
