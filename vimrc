@@ -270,7 +270,7 @@ set smarttab
 set copyindent
 set smartindent
 set linebreak
-set textwidth=100
+set textwidth=120
 set autoindent
 set nowrap
 set whichwrap+=h,l,<,>,[,]
@@ -632,7 +632,8 @@ autocmd FileType ruby setlocal sts=2 sw=2 ts=2 et
 autocmd FileType xml setlocal sts=4 sw=4 ts=4 et
 autocmd FileType ant setlocal sts=2 sw=2 ts=2 et
 autocmd FileType html setlocal sts=4 sw=4 ts=4 et
-autocmd FileType javascript setlocal sts=4 sw=4 ts=4 et
+autocmd FileType javascript setlocal sts=2 sw=2 ts=2 et
+autocmd FileType ocaml setlocal sts=2 sw=2 ts=2 et
 autocmd FileType json setlocal syntax=javascript
 
 " When editing a file, always jump to the last known cursor position.
