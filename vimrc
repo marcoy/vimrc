@@ -97,6 +97,9 @@ Plug 'idris-hackers/idris-vim'
 " Elm
 Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
 
+" OCaml
+Plug 'let-def/ocp-indent-vim', { 'for': 'ocaml' }
+
 call plug#end()
 
 " Enable file type detection.
@@ -1036,7 +1039,8 @@ let g:ag_mapping_message=0
 "===============================================================================
 " delimitMate
 "===============================================================================
-au FileType haskell,clojure,java,cabal,python,scala let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType haskell,clojure,java,cabal,python,scala,ocaml let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType ocaml let b:delimitMate_quotes = "\""
 
 
 "===============================================================================
