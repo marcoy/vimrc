@@ -76,7 +76,7 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Scala
 Plug 'derekwyatt/vim-scala'
-Plug 'ensime/ensime-vim', { 'for': 'scala' }
+" Plug 'ensime/ensime-vim', { 'for': 'scala' }
 
 " Haskell
 " Plug 'dag/vim2hs'
@@ -99,6 +99,9 @@ Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
 
 " OCaml
 Plug 'let-def/ocp-indent-vim', { 'for': 'ocaml' }
+
+" Javascript
+Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 
 call plug#end()
 
@@ -423,6 +426,7 @@ nnoremap <Leader>sf z=
 
 " <Leader>d: Delete the current buffer
 nnoremap <unique> <Leader>d :bdelete<CR>
+nnoremap <unique> <Leader>D :Bdelete<CR>
 
 " VimFiler
 nnoremap <unique> <Leader>e :VimFilerExplorer<CR>
