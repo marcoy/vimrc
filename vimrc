@@ -25,33 +25,33 @@ Plug 'tpope/vim-commentary'
 Plug 'int3/vim-extradite'
 Plug 'kshenoy/vim-signature'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'majutsushi/tagbar'
-Plug 'SirVer/ultisnips'
-Plug 'rking/ag.vim'
-Plug 'losingkeys/vim-niji'
+" Plug 'majutsushi/tagbar'
+" Plug 'SirVer/ultisnips'
+" Plug 'rking/ag.vim'
+" Plug 'losingkeys/vim-niji'
 Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/syntastic'
-Plug 'tsukkee/unite-tag'
-Plug 'eiiches/unite-tselect'
+" Plug 'scrooloose/syntastic'
+" Plug 'tsukkee/unite-tag'
+" Plug 'eiiches/unite-tselect'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'justinmk/vim-sneak'
 Plug 'atweiden/vim-dragvisuals'
-Plug 'elixir-lang/vim-elixir'
-Plug 'honza/vim-snippets'
-Plug 'ekalinin/Dockerfile.vim'
+" Plug 'elixir-lang/vim-elixir'
+" Plug 'honza/vim-snippets'
+" Plug 'ekalinin/Dockerfile.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 't9md/vim-choosewin'
-Plug 'wellle/targets.vim'
+" Plug 't9md/vim-choosewin'
+" Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tommcdo/vim-exchange'
-Plug 'rhysd/clever-f.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'xolox/vim-misc'
-Plug 'robbles/logstash.vim'
-Plug 'moll/vim-bbye'
-Plug 'godlygeek/tabular'
+" Plug 'rhysd/clever-f.vim'
+" Plug 'rizzatti/dash.vim'
+" Plug 'xolox/vim-misc'
+" Plug 'robbles/logstash.vim'
+" Plug 'moll/vim-bbye'
+" Plug 'godlygeek/tabular'
 
 " Colourscheme
 " Plug 'tpope/vim-vividchalk'
@@ -69,39 +69,39 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'flazz/vim-colorschemes'
 
 " Clojure
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'guns/vim-sexp', { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'guns/vim-clojure-highlight'
+" Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+" Plug 'guns/vim-sexp', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Scala
-Plug 'derekwyatt/vim-scala'
+" Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim', { 'for': 'scala' }
 
 " Haskell
 " Plug 'dag/vim2hs'
-Plug 'eagletmt/neco-ghc'
-Plug 'eagletmt/ghcmod-vim'
-Plug 'bitc/vim-hdevtools'
-Plug 'Twinside/vim-hoogle'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'enomsg/vim-haskellConcealPlus'
+" Plug 'eagletmt/neco-ghc'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'bitc/vim-hdevtools'
+" Plug 'Twinside/vim-hoogle'
+" Plug 'neovimhaskell/haskell-vim'
+" Plug 'enomsg/vim-haskellConcealPlus'
 
 " PureScript
-Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
-Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
+" Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
+" Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
 
 " Idris
-Plug 'idris-hackers/idris-vim'
+" Plug 'idris-hackers/idris-vim'
 
 " Elm
-Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
+" Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
 
 " OCaml
-Plug 'let-def/ocp-indent-vim', { 'for': 'ocaml' }
+" Plug 'let-def/ocp-indent-vim', { 'for': 'ocaml' }
 
 " Javascript
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+" Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 
 call plug#end()
 
@@ -614,7 +614,7 @@ let b:match_debug = 1
 "===============================================================================
 if s:is_macvim
     " set guifont=Hasklig\ Light:h11
-    set guifont=Iosevka\ Light:h11
+    set guifont=Iosevka-Marco-Custom:h11
     set transparency=2
 else
     set guifont=Inconsolata\ for\ Powerline\ Medium\ 12
